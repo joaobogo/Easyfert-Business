@@ -7,10 +7,9 @@ export default defineConfig({
   name: 'default',
   title: 'My Sanity Project',
 
-  // projectId: 'n09nml6o',
-  projectId: 'easyfert',
+  projectId: 'n09nml6o',
   dataset: 'production',
-  basePath: 'https://easyfert.sanity.studio/',
+  // basePath: 'https://easyfert.sanity.studio/',
   plugins: [deskTool(), visionTool()],
 
   schema: {
