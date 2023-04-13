@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -8,16 +7,15 @@ const NavbarContainer = styled.nav`
   background-color: #076a58;
   border-style: solid;
   border-color: #febc30;
-  border-radius:  0px  0px 2px 2px ;
+  border-radius: 0px 0px 3px 3px;
   height: 65px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  
-  @media screen and (max-width:767px){
+  @media screen and (max-width: 767px) {
     flex-direction: column;
     height: 150px;
-  align-items: center;
+    align-items: center;
   }
 `;
 
-export default NavbarContainer
+export default NavbarContainer;

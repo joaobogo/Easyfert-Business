@@ -5,7 +5,14 @@ const Row = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-  margin: 10px;
+margin-left: 195px;
+padding: 10px;
+
+
+  .shipping {
+    width: 250px;
+    height: 40px;
+  }
 
   img {
     width: 60px;

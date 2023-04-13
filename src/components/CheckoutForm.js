@@ -356,11 +356,11 @@ const updateCustomer = (orderKey) => {
             {link && <Link to="/creditcard">Pagar com Cartão de Crédito</Link>} */}
           </div>
         </form>
-
+{/* 
         <div className="row">
           <button onClick={handleClick}>Verificar Status do Pagamento</button>
           <p className="pstatus">{paymentstatus}</p>
-        </div>
+        </div> */}
       </CheckoutContainer>
       <Footer />
       <Lowfooter />

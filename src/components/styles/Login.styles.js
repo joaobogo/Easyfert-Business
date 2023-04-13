@@ -15,6 +15,7 @@ const LoginContainer = styled.div`
     rgba(7, 106, 88, 1) 35%,
     rgba(205, 225, 222, 1) 100%
   );
+  
   h2 {
     color: white;
     margin-bottom: 0;
@@ -24,10 +25,17 @@ const LoginContainer = styled.div`
     margin-top: -40px;
   }
 
+  .admintitle {
+    font-size: 32px;
+    display: flex;
+    text-align: center;
+    margin-top: 5px;
+  }
+
   .title {
     margin-bottom: -15px;
   }
-  
+
   form {
     display: flex;
     flex-direction: column;
@@ -55,17 +63,19 @@ const LoginContainer = styled.div`
 
   form button {
     margin-top: 15px;
-    border: solid black 1px;
-    background: #35ba6f;
+    border: solid white 1px;
+    background: #398879;
     border-radius: 10px;
     font-size: 14px;
     width: 170px;
     height: 30px;
+    color: white;
   }
 
   form button:hover {
     cursor: pointer;
     border: 1px solid white;
+    background-color: #83b5ac;
   }
 
   Link {

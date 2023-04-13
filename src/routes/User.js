@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import AdminContext from "../context/Admincontext";
 import Cryptojs from "crypto-js";
 import { client } from "../client";
+import UserContainer from "../components/styles/UserContainer.style";
 
 const key = process.env.REACT_APP_CRYPTO;
 
@@ -18,13 +19,11 @@ function User() {
     const newencrypted = Cryptojs.HmacSHA1(newPassword, key).toString();
     if (encrypted === user.password) {
       setUser({ ...user, password: newencrypted });
-      console.log(user);
       setResponse("");
       client
         .patch(user._id)
         .set({ password: newencrypted })
         .commit()
-        .then(console.log);
     } else {
       setResponse("Senha Incorreta");
     }
@@ -37,8 +36,9 @@ function User() {
   return (
     <>
       {user ? (
-        <div>
-          <p>Email: {user.email}</p>
+        <UserContainer>
+          <div className="card">
+          <p><strong>Email:</strong> {user.email}</p>
           <button onClick={handleEdit}>Editar Senhar</button>
           {isEditing ? (
             <form>
@@ -58,7 +58,8 @@ function User() {
               <p>{response}</p>
             </form>
           ) : null}
-        </div>
+          </div>
+        </UserContainer>
       ) : null}
     </>
   );

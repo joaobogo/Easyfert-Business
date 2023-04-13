@@ -38,10 +38,11 @@ function OrderDetails({ order }) {
   }, []);
 
   return (
+  
     <OrderDetailsContainer>
       <div className="rightbar">
         <h2>Pedidos Realizados:</h2>
-        <p>Produtos:</p>
+        <p><strong>Produtos:</strong></p>
         {products.map((item) => (
           <div key={item.id}>
             <p>{item.name}</p>
@@ -49,14 +50,14 @@ function OrderDetails({ order }) {
           </div>
         ))}
         <p>
-          Endereço:
+        <strong>Endereço:</strong>
           <br></br>
           {order.address}
         </p>
-        <p>Dados do Cliente: {order.personal_data}</p>
-        <p>Tipo do Envio: {order.mailing_type}</p>
-        <p>Preço: {order.total_price} </p>
-        <p>Status do Pagamento: {translate(status)}</p>
+        <p><strong>Dados do Cliente:</strong> {order.personal_data}</p>
+        <p><strong>Tipo do Envio:</strong> {order.mailing_type}</p>
+        <p><strong>Preço:</strong> {order.total_price} </p>
+        <p><strong>Status do Pagamento:</strong> {translate(status)}</p>
       </div>
     </OrderDetailsContainer>
   );

@@ -39,7 +39,7 @@ function ProtectedRoute({ children }) {
         <>
           <LoginContainer>
             <form>
-              <h2>Login de Administrador</h2>
+              <h2 className="admintitle">Login de Administrador</h2>
               <p>Email:</p>
               <input
                 placeholder="Email"

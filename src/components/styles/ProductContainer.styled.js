@@ -12,7 +12,7 @@ const ProductContainer = styled.div`
 
   h1 {
     text-align: center;
-    margin-bottom: -15px;
+    margin-bottom: -25px;
     color: #076a58;
   }
 `;

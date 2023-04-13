@@ -15,6 +15,14 @@ h3{
   color: #fff2d6;
 }
 
+.media{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
 
 a{
   transform: scale(1.3);

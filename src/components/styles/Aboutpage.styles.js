@@ -24,9 +24,11 @@ align-items: center;
 }
 
 h2{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Gloock', serif;
     color: #076a58;
-    margin:15px;
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 p{

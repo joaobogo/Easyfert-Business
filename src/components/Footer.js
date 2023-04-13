@@ -29,14 +29,14 @@ function Footer() {
         <p>
           <FaMailBulk></FaMailBulk> easyfert@easyfertinfo.com
         </p>
-        <Row>
+        <div className="media">
           <a href="www.facebook.com">
             <FaFacebook></FaFacebook>
           </a>
           <a href="www.instagram.com">
             <FaInstagram></FaInstagram>
           </a>
-        </Row>
+        </div>
       </Column>
     </FooterContainer>
   );

@@ -9,7 +9,7 @@ margin: 50px;
 
 .fretep{
 text-align: center;
-
+font-family: Arial, Helvetica, sans-serif;
 }
 
 .shippingbutton{

@@ -16,14 +16,17 @@ function Orders() {
   return (
     <OrderContainer>
       <div className="leftbar">
+        <div className="button2">
+          <Link to="/">Página Inicial</Link>
+        </div>
         <div className="button">
           <Link to="user">Configurações de Usuário</Link>
         </div>
       </div>
       <div className="orderdetails">
-      {orders.map((order) => (
-        <OrderDetails key={order.id} order={order} />
-      ))}
+        {orders.map((order) => (
+          <OrderDetails key={order.id} order={order} />
+        ))}
       </div>
     </OrderContainer>
   );
