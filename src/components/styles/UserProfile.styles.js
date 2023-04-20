@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const OrderContainer = styled.div`
+const UserProfileContainer = styled.div`
+
   display: flex;
   height: 100%;
   width: 100vw;
-  
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -14,11 +14,11 @@ const OrderContainer = styled.div`
   );
 
 
+
   .orderdetails {
     display: flex;
     flex-direction: column;
   }
-
 
   .button {
     background-color: #076a58;
@@ -58,4 +58,4 @@ const OrderContainer = styled.div`
   }
 `;
 
-export default OrderContainer;
+export default UserProfileContainer;

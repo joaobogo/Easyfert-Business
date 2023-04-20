@@ -21,7 +21,7 @@ h3{
 }
 
 h4{
-    font-family: arial;
+   
     text-align:center;
 }
 

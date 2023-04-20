@@ -3,6 +3,7 @@ import ProductContainer from "./styles/ProductContainer.styled";
 import { client } from "../client";
 import ProductCard from "./ProductCard";
 import MapContainer from "./styles/ProductMapContainer.styles";
+import { getBlingProducts } from "../functions";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -11,8 +12,10 @@ function Products() {
     getServerSideProps().then((res) => {
       setProducts(res.products);
     });
+    getBlingProducts().then(console.log)
   }, []);
 
+    
   return (
     <ProductContainer>
       <h1>Mais Vendidos</h1>

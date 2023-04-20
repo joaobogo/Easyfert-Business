@@ -24,7 +24,7 @@ const UserContainer = styled.div`
   }
 
   .card p {
-    font-family: Arial, Helvetica, sans-serif;
+  
     margin-left: 15px;
   }
 

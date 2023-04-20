@@ -5,6 +5,7 @@ const ProductCardContainer = styled.div`
   height: 500px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 25px;
   margin-top: 80px;
   align-items: center;
@@ -14,8 +15,9 @@ const ProductCardContainer = styled.div`
   border-radius: 10px;
   -moz-box-shadow: 0 0 20px #ccc;
   -webkit-box-shadow: 0 0 20px #ccc;
-  box-shadow: 0 0 20px #ccc;
-  border:solid 1px white;
+  box-shadow: 0 0 20px #b5d2cd;
+  border: solid 1px white;
+  padding: 10px;
 
   :hover {
     border: solid 1px #344e41;
@@ -23,29 +25,19 @@ const ProductCardContainer = styled.div`
   }
 
   span {
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 16px;
     color: #076a58;
   }
 
-  :hover .buybutton {
-    display: inline-block;
-  }
-
-  :hover .detailsbutton {
-    display: inline-block;
-  }
-
   .buttoncontainer {
     display: flex;
     justify-content: space-evenly;
-    
   }
 
   .buybutton {
     height: 50px;
-    border: transparent;
+    border: solid #076a58 1px;
     background-color: #076a58;
     font-weight: bold;
     color: white;
@@ -53,11 +45,16 @@ const ProductCardContainer = styled.div`
     width: 40%;
     transition: 0.3s;
     border-radius: 5px;
+    font-family: "Roboto", sans-serif;
   }
 
   .detailsbutton {
-    height: 50px;
-    border: transparent;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    border: solid #076a58 1px;
     background-color: #076a58;
     font-weight: bold;
     color: white;
@@ -67,17 +64,16 @@ const ProductCardContainer = styled.div`
     border-radius: 5px;
   }
 
-  .detailsbutton:hover{
+  .detailsbutton:hover {
     background-color: #207969;
-    border: #febc30 solid 2px;
+    border: #febc30 solid 1px;
     transition: 0.1s;
     cursor: pointer;
-    display: inline-block;
   }
 
   .buybutton:hover {
     background-color: #207969;
-    border: #febc30 solid 2px;
+    border: #febc30 solid 1px;
     transition: 0.1s;
     cursor: pointer;
     display: inline-block;
@@ -93,12 +89,18 @@ const ProductCardContainer = styled.div`
     font-size: 18px;
     text-align: center;
     color: #076a58;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
     padding: 10px;
+    align-self: center;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  span {
+    margin-bottom: 15px;
   }
 
   p {
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 20px;
     margin-top: 10px;

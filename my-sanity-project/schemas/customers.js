@@ -2,9 +2,9 @@ export default {
   name: 'customer',
   title: 'Customer',
   type: 'document',
-  fields: [
+  fields: [             
     {
-      name: 'orders',
+      name: 'orders'    ,
       title: 'orders',
       type: 'array',
       of: [{type: 'string'}],

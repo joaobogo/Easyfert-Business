@@ -5,21 +5,23 @@ const ButtonContainer = styled.div`
   width: 700px;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 300px;
+  margin-top: 230px;
   margin-right: 850px;
 
   .button {
     border-radius: 10px;
     background-color: #076a58;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     width: 400px;
     font-size: 16px;
     color: #dad7cd;
-    border: solid #febc30 2px;
+    border: solid #dad7cd 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    left: 35px;
+    
   }
 
   a {
@@ -27,9 +29,9 @@ const ButtonContainer = styled.div`
   }
 
   .button:hover {
-    background-color: #398879;
+    background-color: #207969;
     transition: 0.1s;
-    color: #344e41;
+   
   }
 `;
 

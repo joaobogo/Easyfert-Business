@@ -7,7 +7,7 @@ const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e6f0ef;
+  
   
 
   h1 {

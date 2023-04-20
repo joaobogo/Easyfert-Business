@@ -5,7 +5,7 @@ import IconLink from './styles/IconLink.styled'
 import { FaFacebook, FaInstagram, FaShoppingCart, FaUser } from "react-icons/fa"
 import Logo from './styles/Logo.styled'
 import LogoImage from './styles/LogoImage.styled'
-import Logoimg from '../assets/eflogominiwhite.png'
+import Logoimg from '../assets/eflogomini.png'
 import SimpleDiv from './styles/SimpleDiv.styled'
 
 

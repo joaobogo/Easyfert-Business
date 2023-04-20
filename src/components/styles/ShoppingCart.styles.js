@@ -6,7 +6,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-font-family:Arial, Helvetica, sans-serif;
+
 
 h1{
     color: #076a58;

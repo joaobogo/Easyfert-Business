@@ -5,9 +5,8 @@ const Row = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-margin-left: 195px;
-padding: 10px;
-
+  margin-left: 195px;
+  padding: 10px;
 
   .shipping {
     width: 250px;
@@ -20,12 +19,11 @@ padding: 10px;
   }
 
   p {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    color: #344e41;
+    color: #076a58;
   }
   span {
-    border-right: 1px solid #344e41;
+    border-right: 1px solid #076a58;
   }
 `;
 

@@ -1,21 +1,50 @@
-import styled from 'styled-components';
-import mainphoto from '../../assets/mainphoto.jpg'
+import styled from "styled-components";
+import mainphoto from "../../assets/mainphoto.jpg";
 
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: #fff;
-  height: 450px;
+  height: 550px;
   padding: 0;
-  justify-content: center;
-background: url(${mainphoto}) no-repeat ;
+  justify-content: space-evenly;
+  background: url(${(props) => props.bgimage}) no-repeat;
+  background-size: 100vw;
 
+  .leftbutton {
+    position: relative;
+    bottom: 70px;
+    left: 25px;
+    border-radius: 50px;
+    border: white;
+    height: 20px;
+    font-weight: bold;
+    opacity: 80%;
+  }
 
-button{
-  width: 80%;
-}
+  .leftbutton:hover {
+    cursor: pointer;
+  }
 
+  .rightbutton {
+    position: relative;
+    bottom: 70px;
+    left: 1230px;
+    border-radius: 50px;
+    border: white;
+    height: 20px;
+    font-weight: bold;
+    opacity: 80%;
+  }
 
+  .rightbutton:hover {
+    cursor: pointer;
+  }
+
+  button {
+    width: 80%;
+    
+  }
 `;
 
-export default MainContainer
+export default MainContainer;

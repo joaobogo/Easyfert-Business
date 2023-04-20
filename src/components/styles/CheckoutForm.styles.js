@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 const CheckoutContainer = styled.div`
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+ 
 
   button {
-    border: #febc30 solid;
+    border: #076a58 solid;
     width: 150px;
     height: 50px;
     font-size: 14px;
@@ -14,6 +14,7 @@ const CheckoutContainer = styled.div`
     color: #dad7cd;
     margin: 10px;
     border-radius: 5px;
+    margin-bottom: 30px;
   }
 
   button:hover {
@@ -77,7 +78,7 @@ const CheckoutContainer = styled.div`
   }
 
   form input {
-    width: 385px;
+    width: 383px;
     height: 30px;
   }
 

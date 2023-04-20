@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 const TableContainer = styled.table`
-  font-family: Arial, Helvetica, sans-serif;
+ 
   text-align: center;
   justify-content: space-evenly;
   margin: 50px;

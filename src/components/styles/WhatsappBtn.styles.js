@@ -16,7 +16,7 @@ const WhatsappBtnContainer = styled.div`
 width: 80px;
 transition: 0.4s;
 border-radius: 50%;
-border: solid #febc30;
+border: solid #febc30 2px;
 }
 
 .whatsappbtn img:hover{

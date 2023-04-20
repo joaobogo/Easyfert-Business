@@ -6,5 +6,5 @@ import customers from "./customers"
 
 
 export const schemaTypes = [
-product, order, shipping, user, customers,            
+product, order, shipping, user, customers,                    
 ]

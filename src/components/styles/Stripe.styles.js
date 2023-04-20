@@ -39,7 +39,7 @@ form {
 /* Buttons and links */
 button {
   background: #076a58;
-  font-family: Arial, sans-serif;
+  
   color: #ffffff;
   border-radius: 4px;
   border: 0;

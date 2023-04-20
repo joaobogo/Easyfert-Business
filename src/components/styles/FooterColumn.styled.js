@@ -11,8 +11,8 @@ const Column = styled.div`
   margin: 5px auto auto;
 
 h3{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #fff2d6;
+  color: #076a58;
+  font-weight: bolder;
 }
 
 .media{
@@ -26,7 +26,7 @@ h3{
 
 a{
   transform: scale(1.3);
-  color: #fff2d6;
+  color: #076a58;
 }
 
 a:hover{
@@ -34,8 +34,9 @@ a:hover{
 }
 
   p{
-    color: #fff2d6;
+    color: #076a58;
     margin: 3px;
+    font-weight: bolder;
   }
 
   img{

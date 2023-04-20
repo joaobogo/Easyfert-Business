@@ -19,10 +19,14 @@ function CartProvider({ children }) {
   const [customerData, setCustomerData] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(!!customerKey);
   const [customerId, setCustomerId] = useState(customerKey);
+  const [sanityprod, setSanityProd] = useState([]);
 
   useEffect(() => {
     client.fetch('*[_type=="shipping"]').then((prices) => {
       setShippings(prices);
+    });
+    client.fetch('*[_type=="product"]').then((products) => {
+      setSanityProd(products);
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
@@ -50,6 +54,7 @@ function CartProvider({ children }) {
     isLoggedIn,
     setIsLoggedIn,
     setCustomerKey,
+    sanityprod,
   };
 
   return (

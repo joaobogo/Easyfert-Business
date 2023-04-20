@@ -92,9 +92,13 @@ function ProductDetails() {
         {product ? (
           <section>
             <div className="leftmenu">
-              <button onClick={setPrevImg}>{"<"}</button>
+              <button className="arrows" onClick={setPrevImg}>
+                {"<"}
+              </button>
               <img src={urlFor(product.image[imgIndex])}></img>
-              <button onClick={setNextImg}>{">"}</button>
+              <button className="arrows" onClick={setNextImg}>
+                {">"}
+              </button>
             </div>
 
             <div className="rightmenu">

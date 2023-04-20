@@ -36,13 +36,14 @@ function Cartitem({ item }) {
 
   const increase = () => {
     setQuantity((prevquantity) => {
+      const newquantity = Number(prevquantity) + 1
       const updatedProducts = cart.map((element) => {
         if (element.id != item.id) {
           return element;
         } else {
           return {
             id: item.id,
-            quantity: prevquantity + 1,
+            quantity: newquantity ,
             price: item.price,
             _id: item._id,
           };
@@ -50,7 +51,7 @@ function Cartitem({ item }) {
       });
       setCart(updatedProducts);
       setTotalprice((prevprice) => totalprice + item.price);
-      return prevquantity + 1;
+      return newquantity;
     });
   };
 

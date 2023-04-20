@@ -14,7 +14,10 @@ function Adminprovider({ children }) {
     if(isLogged){
         client
         .fetch('*[_type=="product"]')
-        .then((product) => setSanityProd(product));
+        .then((product) => {
+          setSanityProd(product)
+        console.log(product)
+        });
         client
         .fetch('*[_type=="user"]')
         .then((users) => {

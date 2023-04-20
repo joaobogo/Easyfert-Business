@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const IconLink = styled.a`
   margin-right: 20px;
-  color: #dad7cd;
+  color: #398879;
 
 
   :hover{

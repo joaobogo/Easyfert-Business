@@ -1,12 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { urlFor } from "../client";
 import CartContext from "../context/Cartcontext";
 import ProductCardContainer from "./styles/ProductCard.styles";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../functions";
+import { formatCurrency,getBlingProducts } from "../functions";
+
+
 
 function ProductCard({ product }) {
   const { setCart, cart } = useContext(CartContext);
+
+
+
+
 
   const handleClick = () => {
     setCart((prevcart) => {
@@ -34,6 +40,7 @@ function ProductCard({ product }) {
         <h3>{product.title}</h3>
         <p>{formatCurrency(product.price)}</p>
       </Link>
+      
 
       {cart.some((item) => item.id === product._id) ? (
         <span> Produto já adicionado ao carrinho</span>
@@ -42,7 +49,7 @@ function ProductCard({ product }) {
           <button className="buybutton" onClick={handleClick}>
             Adicionar ao Carrinho
           </button>
-          <button className="detailsbutton">Detalhes do Produto</button>
+          <Link to={`product/${product._id}`} className="detailsbutton">Detalhes do Produto</Link>
         </div>
       )}
     </ProductCardContainer>

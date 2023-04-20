@@ -24,7 +24,6 @@ align-items: center;
 }
 
 h2{
-    font-family: 'Gloock', serif;
     color: #076a58;
     font-size: 28px;
     margin-top: 50px;
@@ -32,12 +31,11 @@ h2{
 }
 
 p{
-    font-family: Arial, Helvetica, sans-serif;
     color: #344e41;
 }
 
 h1{
-    font-family: 'Gloock', serif;
+
     text-align: center;
     color: #076a58;
 }
