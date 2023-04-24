@@ -158,10 +158,10 @@ const updateCustomer = (orderKey) => {
 
   const calculateShipping = (type) => {
     if (type === "PAC") {
-      const pacprice = handlePac(state, city, shippings);
+      const pacprice = handlePac(state, city, shippings,cart);
       setPrice(pacprice);
     } else {
-      const sedexprice = handleSedex(state, city, shippings);
+      const sedexprice = handleSedex(state, city, shippings,cart);
       setPrice(sedexprice);
     }
   };

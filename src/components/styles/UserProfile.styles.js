@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const UserProfileContainer = styled.div`
-
   display: flex;
   height: 100%;
   width: 100vw;
@@ -12,8 +11,6 @@ const UserProfileContainer = styled.div`
     rgba(7, 106, 88, 1) 35%,
     rgba(205, 225, 222, 1) 100%
   );
-
-
 
   .orderdetails {
     display: flex;
@@ -39,7 +36,7 @@ const UserProfileContainer = styled.div`
     margin-left: 200px;
     margin-right: 0px;
     margin-top: 50px;
-    margin-bottom: 0;
+    margin-bottom: -25px;
     border: white solid 1px;
   }
 

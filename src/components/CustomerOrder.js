@@ -110,7 +110,7 @@ function CustomerOrder({ id }) {
           <strong>Status do Envio:</strong>{" "}
           {order.mailing_status || "Preparando Envio"}
         </p>
-        <button onClick={handleUser}>Pedir Novamente</button>
+        <button className="orderagain" onClick={handleUser}>Pedir Novamente</button>
       </div>
     </CustomerOrderContainer>
   );

@@ -1,12 +1,14 @@
-import axios from 'axios'
-
+import axios from "axios";
 
 export const getsum = (items) => {
   return items.reduce((acc, product) => acc + product.price, 0);
 };
 
 export const getTotalSum = (items) => {
-  return items.reduce((acc, product) => acc +  (product.price*product.quantity), 0);
+  return items.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0
+  );
 };
 
 export const translate = (word) => {
@@ -20,7 +22,7 @@ export const translate = (word) => {
 };
 
 export const formatCurrency = (number) => {
-  const fixedNumber = (Number(number)).toFixed(2)
+  const fixedNumber = Number(number).toFixed(2);
   const newnumber = fixedNumber.toString();
   const [integer, decimal] = newnumber.split(".");
   const cents = decimal ? decimal.padEnd(2, "0") : "00";
@@ -32,7 +34,7 @@ export const saveToCart = (newcart) => {
   localStorage.setItem("newcart", JSON.stringify(newcart));
 };
 
-export const handlePac = (state, city, shippings) => {
+export const handlePac = (state, city, shippings,cart) => {
   const shippingByLocation = {
     PR: "Mesmo Estado - PAC",
     RS: "Região Sul - PAC",
@@ -49,10 +51,19 @@ export const handlePac = (state, city, shippings) => {
   }
   console.log(description);
   const shipping = shippings.find((item) => item.description === description);
-  return shipping.price;
+  return shipping.price*countQuantity(cart);
 };
 
-export const handleSedex = (state, city, shippings) => {
+export const countQuantity = (cart) => {
+  let quantity = 0;
+  for (let index = 0; index < cart.length; index++) {
+    const element = cart[index];
+    quantity += element.quantity;
+  }
+  return quantity;
+};
+
+export const handleSedex = (state, city, shippings, cart) => {
   const shippingByLocation = {
     PR: "Mesmo Estado - Sedex",
     RS: "Região Sul - Sedex",
@@ -68,13 +79,12 @@ export const handleSedex = (state, city, shippings) => {
     description = "Brasil - Sedex";
   }
   const shipping = shippings.find((item) => item.description === description);
-  return shipping.price;
+  return shipping.price*countQuantity(cart);
 };
 
 export const getBlingProducts = async () => {
   const apikey = process.env.REACT_APP_BLING;
   const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
-  const response = await axios.get(URL)
-  return response
+  const response = await axios.get(URL);
+  return response;
 };
-

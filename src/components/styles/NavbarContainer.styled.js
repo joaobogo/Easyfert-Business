@@ -9,9 +9,9 @@ const NavbarContainer = styled.nav`
   background-color: #e6f0ee;
   box-shadow: 0 0 20px #b5d2cd;
   
-.iconlinks{
+/* .iconlinks{
   margin-left: -200px;
-}
+} */
 
   @media screen and (max-width: 767px) {
     flex-direction: column;

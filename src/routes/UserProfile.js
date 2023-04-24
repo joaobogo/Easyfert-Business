@@ -12,20 +12,26 @@ function UserProfile() {
 
   return (
     <div>
-    <UserHeader/>
-    <UserProfileContainer>
-      <div className="leftbar">
-        <div className="button2">
-          <Link to="/">Página Inicial</Link>
+      <UserHeader />
+      <UserProfileContainer>
+        <div className="leftbar">
+          <div className="button2">
+            <Link to="/">Página Inicial</Link>
+          </div>
+          <div className="button2">
+            <Link to="/userprofile">Pedidos Realizados</Link>
+          </div>
+          <div className="button2">
+            <Link to="">Notícias Easyfert</Link>
           </div>
         </div>
-      <div className="orderdetails">
-      {customerData.orders &&
-        customerData.orders.map((id) => {
-          return <CustomerOrder key={id} id={id} />;
-        })}
+        <div className="orderdetails">
+          {customerData.orders &&
+            customerData.orders.map((id) => {
+              return <CustomerOrder key={id} id={id} />;
+            })}
         </div>
-    </UserProfileContainer>
+      </UserProfileContainer>
     </div>
   );
 }

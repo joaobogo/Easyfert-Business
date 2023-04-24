@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const LoginContainer = styled.div`
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,21 +14,17 @@ const LoginContainer = styled.div`
     rgba(7, 106, 88, 1) 35%,
     rgba(205, 225, 222, 1) 100%
   );
+
   
-  h2 {
-    color: white;
-    margin-bottom: 0;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-    font-size: 46px;
-    margin-top: -40px;
-  }
 
   .admintitle {
     font-size: 32px;
     display: flex;
     text-align: center;
     margin-top: 5px;
+    margin-bottom: -5px;
+    color: white;
+    font-weight: bold;
   }
 
   .title {

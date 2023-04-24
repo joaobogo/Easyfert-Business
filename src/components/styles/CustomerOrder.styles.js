@@ -29,6 +29,24 @@ display: flex;
   .rightbar p {
     border-bottom: solid 1px;
   }
+
+  .orderagain{
+    border: #076a58 solid;
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #076a58;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .orderagain:hover{
+    background-color: #51978a;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
 `;
 
 export default CustomerOrderContainer;

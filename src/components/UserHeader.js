@@ -22,16 +22,16 @@ function UserHeader() {
       </div>
 
       <div className="rightside">
-        <a href="#">
+        <a className="icon" href="#">
           <FaFacebook />
         </a>
-        <a href="#">
+        <a className="icon" href="#">
           <FaInstagram />
         </a>
-        <a href="/checkout">
+        <a className="icon" href="/checkout">
           <FaShoppingCart />
         </a>
-        <a href="/userprofile">
+        <a className="icon" href="/userprofile">
           <FaUser />
         </a>
       </div>
