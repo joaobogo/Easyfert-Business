@@ -7,7 +7,7 @@ const MainContainer = styled.div`
   background-color: #fff;
   height: 550px;
   padding: 0;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background: url(${(props) => props.bgimage}) no-repeat;
   background-size: 100vw;
 
@@ -43,7 +43,26 @@ const MainContainer = styled.div`
 
   button {
     width: 80%;
+  }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    transform: scale(1.1);
+    margin-top: 20px;
+    margin-bottom: -350px;
     
+    .leftbutton {
+      display: none;
+    }
+
+    .rightbutton {
+      display: none;
+    }
+  }
+
+  @media (max-width: 320px) {
   }
 `;
 

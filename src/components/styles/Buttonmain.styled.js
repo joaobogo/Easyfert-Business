@@ -20,8 +20,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 35px;
-    
+    left: 20px;
   }
 
   a {
@@ -31,7 +30,21 @@ const ButtonContainer = styled.div`
   .button:hover {
     background-color: #207969;
     transition: 0.1s;
-   
+  }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    transform: scale(0.4);
+    position: relative;
+    width: 70%;
+    bottom: 270px;
+    left: -55px;
+    text-align: center;
+  }
+
+  @media (max-width: 320px) {
   }
 `;
 

@@ -25,6 +25,32 @@ const Row = styled.div`
   span {
     border-right: 1px solid #076a58;
   }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    p {
+      width: 80vw;
+      text-align: center;
+      margin-left: -60px;
+    }
+
+    span {
+     display: none;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  @media (max-width: 320px) {
+  }
 `;
 
 export default Row;

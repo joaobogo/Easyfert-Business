@@ -2,11 +2,8 @@ import React from "react";
 import Column from "./styles/FooterColumn.styled";
 import FooterContainer from "./styles/FooterContainer.styled";
 import logoimg from "../assets/eflogo.png";
-import caminhao from "../assets/caminhao.png";
-import correio from "../assets/correio.png";
-import moto from "../assets/moto.png";
 import { FaFacebook, FaInstagram, FaMailBulk, FaPhone } from "react-icons/fa";
-import Row from "./styles/Row.styled";
+
 
 function Footer() {
   return (

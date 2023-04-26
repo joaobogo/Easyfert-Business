@@ -1,36 +1,42 @@
-import React from 'react'
-import NavbarContainer from './styles/NavbarContainer.styled'
-import SocialMediaIcons from './styles/SocialMediaIcons.Styled'
-import IconLink from './styles/IconLink.styled'
-import { FaFacebook, FaInstagram, FaShoppingCart, FaUser } from "react-icons/fa"
-import Logo from './styles/Logo.styled'
-import LogoImage from './styles/LogoImage.styled'
-import Logoimg from '../assets/eflogomini.png'
-import SimpleDiv from './styles/SimpleDiv.styled'
+import React, {useContext} from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaShoppingCart,
+  FaUser,
+} from "react-icons/fa";
+import Logoimg from "../assets/eflogomini.png";
+import UserNavContainer from "./styles/UserNav.styles";
+import CartContext from "../context/Cartcontext";
 
+function Header() {
+    const { customerData } = useContext(CartContext);
 
-const Header = () => {
   return (
-    <NavbarContainer>
-      <SimpleDiv><LogoImage src={Logoimg}></LogoImage>
-        <Logo><a href='/'>EasyFert</a></Logo>
-      </SimpleDiv>
-      <SocialMediaIcons>
-        <IconLink href="#">
+    <UserNavContainer>
+      <div className="leftside">
+        <img classname='mainlogo' src={Logoimg} />
+        <a className="title2" href="/">
+          Easyfert
+        </a>
+      </div>
+
+      <div className="rightside">
+        <a className="icon" href="#">
           <FaFacebook />
-        </IconLink>
-        <IconLink href="#">
+        </a>
+        <a className="icon" href="#">
           <FaInstagram />
-        </IconLink>
-        <IconLink href="/checkout">
+        </a>
+        <a className="icon" href="/checkout">
           <FaShoppingCart />
-        </IconLink>
-        <IconLink href='/userprofile'>
-          <FaUser/>
-        </IconLink>
-      </SocialMediaIcons>
-    </NavbarContainer>
+        </a>
+        <a className="icon" href="/userprofile">
+          <FaUser />
+        </a>
+      </div>
+    </UserNavContainer>
   );
-};
+}
 
 export default Header;

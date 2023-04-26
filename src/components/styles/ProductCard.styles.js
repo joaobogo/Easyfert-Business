@@ -107,6 +107,16 @@ const ProductCardContainer = styled.div`
     margin-left: 2px;
     margin-right: 2px;
   }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+ 
+  }
+
+  @media (max-width: 320px) {
+  }
 `;
 
 export default ProductCardContainer;

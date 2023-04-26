@@ -16,9 +16,9 @@ const banners = [
   },
   {
     bgimage: mainphoto2,
-    text: "Mais sobre a Remo Nutrients/Tabela Posológica",
+    text: "Mais sobre a Remo Nutrients",
   },
-   {
+  {
     bgimage: mainphoto3,
     text: "Crie aqui para criar sua conta",
   },
@@ -54,15 +54,22 @@ function Hero() {
 
   return (
     <MainContainer bgimage={banners[index].bgimage}>
- 
-      <button className="leftbutton" onClick={prevBanner}>{"<"}</button>
-      <button className="rightbutton" onClick={changeBanner}>{">"}</button>
-     
+      
+    
+        <button className="leftbutton" onClick={prevBanner}>
+          {"<"}
+        </button>
+        <button className="rightbutton" onClick={changeBanner}>
+          {">"}
+        </button>
+      
+
       <ButtonContainer>
         <Link className="button" to="/about">
           {banners[index].text}
         </Link>
       </ButtonContainer>
+
     </MainContainer>
   );
 }

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Column = styled.div`
- @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -10,41 +10,53 @@ const Column = styled.div`
   text-align: center;
   margin: 5px auto auto;
 
-h3{
-  color: #076a58;
-  font-weight: bolder;
-}
+  h3 {
+    color: #076a58;
+    font-weight: bolder;
+  }
 
-.media{
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding-left: 10px;
-}
+  .media {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+  }
 
-a{
-  transform: scale(1.3);
-  color: #076a58;
-}
+  a {
+    transform: scale(1.3);
+    color: #076a58;
+  }
 
-a:hover{
-  color: #febc30 ;
-}
+  a:hover {
+    color: #febc30;
+  }
 
-  p{
+  p {
     color: #076a58;
     margin: 3px;
     font-weight: bolder;
   }
 
-  img{
+  img {
     transform: scale(1.3);
     margin-top: -25px;
   }
 
+  @media (max-width: 1250px) {
+  }
 
+  @media (max-width: 768px) {
+
+    img {
+      margin-bottom: -40px;
+    }
+    
+  }
+
+  @media (max-width: 320px) {
+  }
 `;
 
-export default Column
+export default Column;

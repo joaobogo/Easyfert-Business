@@ -13,6 +13,7 @@ function Lowfooter() {
     return (
         <LowfooterContainer>
             <Row>
+        
                 <img src={mastercard} />
                 <img src={visa} />
                 <img src={pix} />

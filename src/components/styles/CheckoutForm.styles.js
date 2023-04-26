@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const CheckoutContainer = styled.div`
   text-align: center;
- 
 
   button {
     border: #076a58 solid;
@@ -90,6 +89,28 @@ const CheckoutContainer = styled.div`
 
   form .row input {
     width: 180px;
+  }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    transform: scale(0.98);
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    .selectrow {
+      transform: scale(0.8);
+    }
+
+    .enviop {
+      margin-right: -15px;
+    }
+  }
+
+  @media (max-width: 320px) {
   }
 `;
 

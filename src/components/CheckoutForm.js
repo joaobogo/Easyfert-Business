@@ -262,22 +262,8 @@ const updateCustomer = (orderKey) => {
               type="text"
             ></input>
           </div>
-          {/* <div className="row">
-            <p>Selecione o tipo de envio:</p>
-            <select
-              disabled={!cep}
-              value={mailingtype}
-              onChange={handleShipping}
-            >
-              <option disabled selected>
-                Selecione *
-              </option>
-              <option>PAC</option>
-              <option>Sedex</option>
-            </select>
-          </div> */}
           <div className={cep ? "selectrow" : "selectrow disabled"}>
-            <p>Selecione o tipo de envio:</p>
+            <p className="enviop">Selecione o tipo de envio:</p>
             <label>
               <input
                 disabled={!cep}
@@ -303,16 +289,6 @@ const updateCustomer = (orderKey) => {
               <img src={sedex} />
             </label>
           </div>
-          {/* <div className="row">
-            <p>Selecione o tipo de Pagamento:</p>
-            <select value={paymentType} onChange={handlePayment}>
-              <option disabled selected>
-                Selecione *
-              </option>
-              <option>PIX</option>
-              <option>Cartão de Crédito</option>
-            </select>
-          </div> */}
           <div className="selectrow">
             <p>Selecione o tipo de Pagamento:</p>
             <label>

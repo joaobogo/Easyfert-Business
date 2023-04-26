@@ -7,11 +7,6 @@ import Products from '../components/Products';
 import WhatsappBtn from '../components/WhatsappBtn';
 
 
-
-
-
-
-
 const Home = () => {
   return (
     <div>

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const CustomerOrderContainer = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80vw;
-  
+
   .rightbar {
     border: solid #076a58;
     text-align: justify;
@@ -15,9 +15,7 @@ display: flex;
     margin: 30px;
     margin-bottom: black solid 1px;
     border-radius: 10px;
-    margin-left: -360px;
     background-color: white;
-    margin-top: ;
   }
 
   h2 {
@@ -30,7 +28,7 @@ display: flex;
     border-bottom: solid 1px;
   }
 
-  .orderagain{
+  .orderagain {
     border: #076a58 solid;
     width: 150px;
     height: 50px;
@@ -41,12 +39,27 @@ display: flex;
     border-radius: 5px;
   }
 
-  .orderagain:hover{
+  .orderagain:hover {
     background-color: #51978a;
     transition: 0.3s;
     cursor: pointer;
   }
 
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      margin-top: 0;
+    }
+
+    .rightbar {
+      width: 60vw;
+    }
+  }
+
+  @media (max-width: 320px) {
+  }
 `;
 
 export default CustomerOrderContainer;
