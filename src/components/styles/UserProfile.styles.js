@@ -41,7 +41,7 @@ const UserProfileContainer = styled.div`
     width: 150px;
     padding: 5px;
     border-radius: 10px;
-    border: white solid 1px;
+    border: white solid 2px;
     margin-top: 15px;
   }
 
@@ -65,6 +65,14 @@ const UserProfileContainer = styled.div`
   @media (max-width: 768px) {
     .leftbar {
       transform: scale(0.8);
+    }
+
+    .button2{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      margin-bottom: -15px;
     }
 
  

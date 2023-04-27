@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 35px;
+    left: 20px;
   }
 
   a {
@@ -40,7 +40,7 @@ const ButtonContainer = styled.div`
     position: relative;
     width: 70%;
     bottom: 270px;
-    left: -60px;
+    left: -55px;
     text-align: center;
   }
 

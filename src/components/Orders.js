@@ -3,6 +3,8 @@ import { client } from "../client";
 import OrderDetails from "./OrderDetails";
 import { Link } from "react-router-dom";
 import OrderContainer from "./styles/Order.styles";
+import Header from '../components/Header'
+
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -14,12 +16,14 @@ function Orders() {
   }, []);
 
   return (
+    <div>
+<Header/>
     <OrderContainer>
       <div className="leftbar">
         <div className="button2">
           <Link to="/">Página Inicial</Link>
         </div>
-        <div className="button">
+        <div className="button2">
           <Link to="user">Configurações de Usuário</Link>
         </div>
       </div>
@@ -29,6 +33,7 @@ function Orders() {
         ))}
       </div>
     </OrderContainer>
+    </div>
   );
 }
 

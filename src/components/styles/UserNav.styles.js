@@ -28,6 +28,7 @@ const UserNavContainer = styled.div`
     font-family: "Secular One";
     color: #398879;
     font-size: 36px;
+   
   }
   
   .leftside {
@@ -56,15 +57,18 @@ const UserNavContainer = styled.div`
   @media (max-width: 768px) {
 
     .title {
-      font-size: 16px;
+      font-size: 17px;
+      margin-left: -15px;;
     }
 
     .title2{
       font-size: 26px;
+      margin-left: -15px;
     }
 
     img{
-      transform:scale(.5)
+      transform:scale(.5);
+      margin-left: -10px;
     }
 
     .rightside{

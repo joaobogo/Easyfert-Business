@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 const OrderContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100vw;
-  
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -13,12 +15,15 @@ const OrderContainer = styled.div`
     rgba(205, 225, 222, 1) 100%
   );
 
+  .leftbar {
+    display: flex;
+    gap: 10px;
+  }
 
   .orderdetails {
     display: flex;
     flex-direction: column;
   }
-
 
   .button {
     background-color: #076a58;
@@ -35,12 +40,13 @@ const OrderContainer = styled.div`
     background-color: #076a58;
     width: 150px;
     padding: 5px;
-    border-radius: 10px 0px 0px 10px;
-    margin-left: 200px;
-    margin-right: 0px;
-    margin-top: 50px;
-    margin-bottom: 0;
-    border: white solid 1px;
+    border-radius: 10px;
+    border: white solid 2px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -15px;
   }
 
   .button:hover {
@@ -55,6 +61,26 @@ const OrderContainer = styled.div`
 
   a {
     color: white;
+  }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    .leftbar {
+      transform: scale(0.8);
+    }
+
+    .button2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      margin-bottom: -15px;
+    }
+  }
+
+  @media (max-width: 320px) {
   }
 `;
 

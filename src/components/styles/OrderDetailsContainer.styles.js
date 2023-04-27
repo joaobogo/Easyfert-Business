@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const OrderDetailsContainer = styled.div`
-  display: flex;
+   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,6 @@ const OrderDetailsContainer = styled.div`
     margin: 30px;
     margin-bottom: black solid 1px;
     border-radius: 10px;
-    margin-left: -360px;
     background-color: white;
   }
 
@@ -27,6 +26,39 @@ const OrderDetailsContainer = styled.div`
 
   .rightbar p {
     border-bottom: solid 1px;
+  }
+
+  .orderagain {
+    border: #076a58 solid;
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #076a58;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .orderagain:hover {
+    background-color: #51978a;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1250px) {
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      margin-top: 0;
+    }
+
+    .rightbar {
+      width: 60vw;
+    }
+  }
+
+  @media (max-width: 320px) {
   }
 `;
 
