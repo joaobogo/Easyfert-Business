@@ -11,7 +11,7 @@ align-items: center;
 
 .description{
     width: 80%;
-    padding: 25px;
+    padding: 1.5rem;
     text-align: justify;
     display: flex;
    justify-content: center;
@@ -20,14 +20,14 @@ align-items: center;
 }
 
 .tablesubs{
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 h2{
     color: #076a58;
-    font-size: 28px;
-    margin-top: 50px;
-    margin-bottom: 10px;
+    font-size: 1.75rem;
+    margin-top: 3.125rem;
+    margin-bottom: 0.625rem;
 }
 
 p{

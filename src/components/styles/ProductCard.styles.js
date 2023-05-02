@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const ProductCardContainer = styled.div`
-  width: 350px;
-  height: 500px;
+  width: 21.88rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   margin: 25px;
-  margin-top: 80px;
+  margin-top: 50px;
   align-items: center;
   text-align: center;
   background-color: white;
@@ -18,6 +17,7 @@ const ProductCardContainer = styled.div`
   box-shadow: 0 0 20px #b5d2cd;
   border: solid 1px white;
   padding: 10px;
+  max-width: 20%;
 
   :hover {
     border: solid 1px #344e41;
@@ -32,17 +32,19 @@ const ProductCardContainer = styled.div`
 
   .buttoncontainer {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    gap: 5px;
   }
 
   .buybutton {
-    height: 50px;
+    height: 50%;
     border: solid #076a58 1px;
     background-color: #076a58;
     font-weight: bold;
     color: white;
-    font-size: 16px;
-    width: 40%;
+    font-size: 14px;
+    width: 100%;
     transition: 0.3s;
     border-radius: 5px;
     font-family: "Roboto", sans-serif;
@@ -53,13 +55,13 @@ const ProductCardContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 48px;
+    height: 50%;
     border: solid #076a58 1px;
     background-color: #076a58;
     font-weight: bold;
     color: white;
-    font-size: 16px;
-    width: 40%;
+    font-size: 14px;
+    width: 100%;
     transition: 0.3s;
     border-radius: 5px;
   }
@@ -80,20 +82,17 @@ const ProductCardContainer = styled.div`
   }
 
   img {
-    transform: scale(0.5);
-    margin-top: -100px;
+    transform: scale(0.55);
+    margin-top: -50px;
   }
 
   h3 {
-    margin-top: -100px;
-    font-size: 18px;
+    margin-top: -2rem;
+    font-size: 16px;
     text-align: center;
     color: #076a58;
-
-    padding: 10px;
     align-self: center;
     width: 85%;
-    margin-left: 20px;
   }
 
   span {
@@ -102,17 +101,55 @@ const ProductCardContainer = styled.div`
 
   p {
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
-    margin-left: 2px;
-    margin-right: 2px;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 100%;
   }
 
   @media (max-width: 1250px) {
   }
 
   @media (max-width: 768px) {
- 
+    max-width: 35%;
+    margin: 2%;
+
+    .buybutton {
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .detailsbutton {
+      width: 100%;
+      font-size: 12px;
+    }
+
+    h3 {
+      font-size: 12px;
+      margin: 0;
+      width: 100%;
+    }
+
+    img {
+      margin: 0;
+      transform: scale(.8);
+    }
+
+    p {
+      font-size: 12px;
+     
+    }
+
+    .buttoncontainer {
+      display: flex;
+      flex-direction: column;
+   
+    }
   }
 
   @media (max-width: 320px) {

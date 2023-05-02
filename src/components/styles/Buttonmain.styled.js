@@ -12,7 +12,7 @@ const ButtonContainer = styled.div`
     border-radius: 10px;
     background-color: #076a58;
     font-weight: 600;
-    width: 400px;
+    width: 20.5rem;
     font-size: 16px;
     color: #dad7cd;
     border: solid #dad7cd 2px;
@@ -20,7 +20,8 @@ const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 20px;
+    left: 4rem;
+    bottom: 4rem;
   }
 
   a {
@@ -39,8 +40,8 @@ const ButtonContainer = styled.div`
     transform: scale(0.4);
     position: relative;
     width: 70%;
-    bottom: 270px;
-    left: -55px;
+    bottom: 4rem;
+    left: -4.5rem;
     text-align: center;
   }
 

@@ -19,10 +19,10 @@ function KitProducts() {
     
   return (
     <ProductContainer>
-      <h1>Kits</h1>
+      <h1 className="kittitle">Kits</h1>
       <MapContainer>
-        {Kits.map((kit) => ( //PAREI AQUI
-          <ProductCard key={product._id} product={product} />
+        {kits.map((kit) => ( 
+          <ProductCard key={kit._id} product={kit} />
         ))}
       </MapContainer>
     </ProductContainer>
@@ -36,4 +36,4 @@ const getServerSideProps = async () => {
   };
 };
 
-export default Products;
+export default KitProducts;

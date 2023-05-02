@@ -34,7 +34,7 @@ function ProductCard({ product }) {
     <ProductCardContainer>
       <Link to={`product/${product._id}`}>
         {product.image && product.image.length && (
-          <img src={urlFor(product.image[0])}></img>
+          <img src={urlFor(product.image[0])}/>
         )}
 
         <h3>{product.title}</h3>

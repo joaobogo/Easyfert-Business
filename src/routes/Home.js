@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Lowfooter from '../components/Lowfooter';
 import Products from '../components/Products';
 import WhatsappBtn from '../components/WhatsappBtn';
+import KitProducts from '../components/KitProducts';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <Header />
       <Hero/>
       <Products/>
+      <KitProducts/>
       <Footer/>
       <Lowfooter/>
       <WhatsappBtn/>

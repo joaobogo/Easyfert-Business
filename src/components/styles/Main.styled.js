@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import mainphoto from "../../assets/mainphoto.jpg";
+
 
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: #fff;
-  height: 550px;
+  height: 11.25rem;
   padding: 0;
   justify-content: space-between;
   background: url(${(props) => props.bgimage}) no-repeat;
@@ -13,8 +13,8 @@ const MainContainer = styled.div`
 
   .leftbutton {
     position: relative;
-    bottom: 70px;
-    left: 25px;
+    bottom: 50%;
+    left: 10%;
     border-radius: 50px;
     border: white;
     height: 20px;
@@ -28,8 +28,8 @@ const MainContainer = styled.div`
 
   .rightbutton {
     position: relative;
-    bottom: 70px;
-    left: 1230px;
+    bottom: 50%;
+    right: 10%;
     border-radius: 50px;
     border: white;
     height: 20px;
@@ -48,11 +48,24 @@ const MainContainer = styled.div`
   @media (max-width: 1250px) {
   }
 
+  @media (min-width: 1000px) {
+    height: 550px;
+
+    .leftbutton {
+      bottom: 70px;
+      left: 25px;
+    }
+
+    .rightbutton {
+      bottom: 70px;
+      left: 63rem;
+    }
+  }
+
   @media (max-width: 768px) {
     transform: scale(1.1);
-    margin-top: 20px;
-    margin-bottom: -350px;
     
+
     .leftbutton {
       display: none;
     }
