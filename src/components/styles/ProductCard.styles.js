@@ -35,6 +35,8 @@ const ProductCardContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     gap: 5px;
+    width: 100%;
+
   }
 
   .buybutton {

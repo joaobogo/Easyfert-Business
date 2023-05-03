@@ -14,8 +14,8 @@ const ProductContainer = styled.div`
 
   h1 {
     text-align: center;
-    margin-top: -25px;
-    margin-bottom: -25px;
+    margin-top: -35px;
+    margin-bottom: -10px;
     color: #076a58;
   }
 

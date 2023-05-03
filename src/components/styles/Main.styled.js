@@ -58,7 +58,7 @@ const MainContainer = styled.div`
 
     .rightbutton {
       bottom: 70px;
-      left: 63rem;
+      left: 65rem;
     }
   }
 
