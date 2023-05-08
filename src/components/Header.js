@@ -25,7 +25,8 @@ function Header() {
         {/* <a className="icon" href="#">
           <FaFacebook />
         </a> */}
-        <a className="icon" href="https://instagram.com/easyfert?igshid=NTc4MTIwNjQ2YQ==">
+        <a className="icon" href="https://instagram.com/easyfert?igshid=NTc4MTIwNjQ2YQ==
+        ">
           <FaInstagram />
         </a>
         <a className="icon" href="/checkout">
