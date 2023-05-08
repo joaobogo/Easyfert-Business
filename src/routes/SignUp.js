@@ -121,6 +121,7 @@ function SignUp() {
             ></input>
           </div>
           <input
+          className="emailinput"
             placeholder="Email *"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

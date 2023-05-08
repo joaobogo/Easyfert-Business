@@ -22,7 +22,7 @@ function UserProfile() {
             <Link to="/userprofile">Pedidos Realizados</Link>
           </div>
           <div className="button2">
-            <Link to="">Notícias Easyfert</Link>
+            <Link to="/blog">Notícias Easyfert</Link>
           </div>
         </div>
         <div className="orderdetails">

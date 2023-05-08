@@ -68,7 +68,7 @@ function Login({ children }) {
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
               <button onClick={handleLogin}>Login</button>
-              <p>{response}</p>
+              <p className="response">{response}</p>
               <Link to="/signup">Novo aqui? Crie uma conta</Link>
             </form>
           </LoginContainer>

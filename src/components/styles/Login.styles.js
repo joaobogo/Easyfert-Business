@@ -73,6 +73,11 @@ const LoginContainer = styled.div`
     background-color: #83b5ac;
   }
 
+  .response{
+    text-align: center;
+    color: red;
+  }
+  
   Link {
     color: white;
   }

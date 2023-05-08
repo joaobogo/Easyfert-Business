@@ -95,22 +95,26 @@ const CheckoutContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    transform: scale(0.98);
-
+    
     h1 {
       margin-bottom: 25px;
     }
 
-    .selectrow {
-      transform: scale(0.8);
-    }
+   form .row input{
+    width: 40vw;
+   }
+
+   .emailinput{
+    width: 86vw;
+   }
 
     .enviop {
       margin-right: -15px;
     }
+
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 400px) {
   }
 `;
 

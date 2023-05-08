@@ -34,7 +34,7 @@ export const saveToCart = (newcart) => {
   localStorage.setItem("newcart", JSON.stringify(newcart));
 };
 
-export const handlePac = (state, city, shippings,cart) => {
+export const handlePac = (state, city, shippings, cart) => {
   const shippingByLocation = {
     PR: "Mesmo Estado - PAC",
     RS: "Região Sul - PAC",
@@ -51,7 +51,7 @@ export const handlePac = (state, city, shippings,cart) => {
   }
   console.log(description);
   const shipping = shippings.find((item) => item.description === description);
-  return shipping.price*countQuantity(cart);
+  return shipping.price * countQuantity(cart);
 };
 
 export const countQuantity = (cart) => {
@@ -79,7 +79,7 @@ export const handleSedex = (state, city, shippings, cart) => {
     description = "Brasil - Sedex";
   }
   const shipping = shippings.find((item) => item.description === description);
-  return shipping.price*countQuantity(cart);
+  return shipping.price * countQuantity(cart);
 };
 
 export const getBlingProducts = async () => {
@@ -87,4 +87,12 @@ export const getBlingProducts = async () => {
   const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
   const response = await axios.get(URL);
   return response;
+};
+
+export const getString = (block) => {
+  let result = "";
+  for (let index = 0; index < block.length; index++) {
+    const text = block[index].text;
+    result += text
+  } return result
 };

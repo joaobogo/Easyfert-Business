@@ -16,6 +16,8 @@ import UserProfile from "./routes/UserProfile";
 import SignUp from "./routes/SignUp"
 import Login from "./routes/Login";
 import Inventory from "./routes/Inventory";
+import Blog from "./routes/Blog";
+import Blogdetails from "./routes/Blogdetails";
 
 
 function App() {
@@ -59,10 +61,10 @@ function App() {
               path="/confirmationpage/:id"
               element={<ConfirmationPage />}
             />
-            {/* <Route path='/home/dashboard/shipping' element={}/>
-                <Route path='/home/dashboard/inventory' element={}/> */}
             <Route path="/userprofile" element={<Login><UserProfile/></Login>} />
             <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/blog" element={<Blog/>}/>
+            <Route path="/blog/:id" element={<Blogdetails />} />
           </Routes>
         </BrowserRouter>
       </Adminprovider>

@@ -15,7 +15,7 @@ const UserNavContainer = styled.div`
   .title {
     display: flex;
     align-items: center;
-    color: #398879;
+    
     font-family: "Secular One";
     color: #398879;
     font-size: 36px;

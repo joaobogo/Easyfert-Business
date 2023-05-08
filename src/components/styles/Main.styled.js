@@ -29,7 +29,7 @@ const MainContainer = styled.div`
   .rightbutton {
     position: relative;
     bottom: 50%;
-    right: 10%;
+    right: 20%;
     border-radius: 50px;
     border: white;
     height: 20px;
@@ -58,7 +58,7 @@ const MainContainer = styled.div`
 
     .rightbutton {
       bottom: 70px;
-      left: 65rem;
+      left: 64rem;
     }
   }
 

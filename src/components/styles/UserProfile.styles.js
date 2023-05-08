@@ -18,6 +18,7 @@ const UserProfileContainer = styled.div`
   .leftbar {
     display: flex;
     gap: 10px;
+    margin-bottom: -10px;
   }
 
   .orderdetails {
