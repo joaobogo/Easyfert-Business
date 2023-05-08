@@ -27,10 +27,10 @@ function Footer() {
           <FaMailBulk></FaMailBulk> easyfert@easyfertinfo.com
         </p>
         <div className="media">
-          <a href="www.facebook.com">
+          {/* <a href="www.facebook.com">
             <FaFacebook></FaFacebook>
-          </a>
-          <a href="www.instagram.com">
+          </a> */}
+          <a href="https://instagram.com/easyfert?igshid=NTc4MTIwNjQ2YQ==">
             <FaInstagram></FaInstagram>
           </a>
         </div>
