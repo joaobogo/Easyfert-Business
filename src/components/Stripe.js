@@ -11,7 +11,7 @@ const stripeId = process.env.REACT_APP_STRIPE;
 
 const stripePromise = loadStripe(stripeId);
 
-export default function App() {
+export default function Stripe() {
   const [clientSecret, setClientSecret] = useState("");
   const { totalprice, shippingPrice } = useContext(CartContext);
   const navigate = useNavigate();

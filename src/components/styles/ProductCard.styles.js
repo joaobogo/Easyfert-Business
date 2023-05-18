@@ -125,13 +125,10 @@ const ProductCardContainer = styled.div`
     max-width: 100%;
   }
 
-  @media (max-width: 1250px) {
-  }
-
   @media (max-width: 768px) {
     max-width: 35%;
     margin: 2%;
-height: 30vh;
+    height: 260px;
 
     .heart {
       position: relative;
@@ -140,7 +137,7 @@ height: 30vh;
       width: 25%;
     }
 
-    span{
+    span {
       font-size: 12px;
     }
 
@@ -177,8 +174,7 @@ height: 30vh;
   }
 
   @media (max-width: 380px) {
-height: 40vh;
-
+    /* height: 40vh; */
   }
 `;
 
