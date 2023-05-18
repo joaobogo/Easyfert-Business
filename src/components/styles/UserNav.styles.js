@@ -31,16 +31,27 @@ const UserNavContainer = styled.div`
    
   }
   
+.search{
+  color: #398879
+}
+
   .leftside {
     display: flex;
   }
 
   .rightside {
-    width: 150px;
+    width: 250px;
     display: flex;
     justify-content: space-evenly;
   }
 
+  .rightside input{
+    width: 50%;
+    background-color: rgba(255,255,255,.4);
+    border: gray solid 1px;
+    border-radius: 10px;
+    text-align: center;
+  }
   .icon {
     color: #398879;
   }

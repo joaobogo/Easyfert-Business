@@ -9,11 +9,12 @@ import ShoppingCartContainer from "../components/styles/ShoppingCart.styles";
 import Header from "../components/Header";
 import Lowfooter from "../components/Lowfooter";
 import Footer from "../components/Footer";
+import FavoriteItem from "../components/FavoriteItem";
 
 
 
 const ShoppingCart = () => {
-  const { cart, totalprice, setGlobalCep, shippings } = useContext(CartContext);
+  const { cart, totalprice, setGlobalCep, shippings,wishlist } = useContext(CartContext);
   const navigate = useNavigate();
   const [cep, setCep] = useState("");
   const [city, setCity] = useState("");
@@ -56,6 +57,13 @@ const ShoppingCart = () => {
     <>
       <Header />
       <ShoppingCartContainer>
+        
+          <h1>Meus Favoritos</h1>
+          {wishlist.map((id) => (
+            <FavoriteItem key={id} id={id}/>
+          ))}
+        
+
         <h1>Detalhes do Pedido</h1>
 
         {cart.map((item) => (

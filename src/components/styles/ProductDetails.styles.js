@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const ProductDetailsContainer = styled.div`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 50px;
 
-  
   .fretep {
     text-align: center;
   }
@@ -24,12 +23,12 @@ const ProductDetailsContainer = styled.div`
   }
 
   .shippingbutton {
-    width: 160px;
+    width: 150px;
     height: 35px;
     background-color: #076a58;
     color: white;
     border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bolder;
   }
 
@@ -47,7 +46,9 @@ const ProductDetailsContainer = styled.div`
   .buttoncontainer {
     display: flex;
     justify-content: space-evenly;
-    margin: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .leftmenu img {
@@ -82,7 +83,7 @@ const ProductDetailsContainer = styled.div`
   .rightmenu {
     border: solid 1px;
     border-color: #344e41;
-    width: 30%;
+    width: 35%;
     text-align: left;
     padding: 15px;
     box-shadow: 0 0 10px #b5d2cd;
@@ -96,14 +97,96 @@ const ProductDetailsContainer = styled.div`
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bolder;
+    border: none;
   }
 
   .rightmenu .buybutton:hover {
     background-color: #51978a;
     cursor: pointer;
     transition: 0.3s;
+  }
+
+  .wpbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    background-color:#076a58 ;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    margin-top: 5px;
+   
+  }
+
+  .wpbutton a{
+    color: white;
+  }
+
+  .wpbutton:hover {
+    background-color: #51978a;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .heart {
+    position: relative;
+    left: 90%;
+    width: 10%;
+  }
+
+  .heart:hover {
+    cursor: pointer;
+  }
+
+  .imagemobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+
+    .leftmenu {
+      display: none;
+    }
+
+    .imagemobile {
+      display: flex;
+      width: 95%;
+      margin: 0;
+    }
+
+    .rightmenu {
+      width: 70vw;
+    }
+
+    .shippingbutton {
+      width: 130px;
+      height: 40px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .leftmenu {
+      display: none;
+    }
+
+    .imagemobile {
+      display: flex;
+    }
   }
 `;
 

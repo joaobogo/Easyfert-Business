@@ -1,5 +1,5 @@
 import MainContainer from "./styles/Main.styled";
-
+import ReactScroll from 'react-scroll'
 import React from "react";
 import ButtonContainer from "./styles/Buttonmain.styled";
 import { Link } from "react-router-dom";
@@ -13,14 +13,17 @@ const banners = [
   {
     bgimage: mainphoto1,
     text: "Clique aqui para ver os nossos kits",
+    url:'kits'
   },
   {
     bgimage: mainphoto2,
     text: "Mais sobre a Remo Nutrients",
+    url:'/about'
   },
   {
     bgimage: mainphoto3,
     text: "Crie aqui para criar sua conta",
+    url: '/signup'
   },
 ];
 
@@ -65,9 +68,21 @@ function Hero() {
       
 
       <ButtonContainer>
-        <Link className="button" to="/about">
+        {banners[index].url === 'kits' ? (
+          <ReactScroll.Link 
+          activeClass="active"
+          to="kits"
+          spy={true}
+          smooth={true}
+          duration={500}
+          className="button"
+          >{banners[index].text}</ReactScroll.Link>
+        ):(
+          <Link className="button" to={banners[index].url}>
           {banners[index].text}
         </Link>
+        )}
+       
       </ButtonContainer>
 
     </MainContainer>

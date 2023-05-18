@@ -8,13 +8,23 @@ import Footer from "../components/Footer";
 import ProductDetailsContainer from "../components/styles/ProductDetails.styles";
 import { formatCurrency, handlePac, handleSedex } from "../functions";
 import axios from "axios";
+import redheart from "../assets/redheart.png";
+import heart from "../assets/solidheart.png";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [imgIndex, setImgIndex] = useState(0);
-  const { setCart, cart, totalprice, setGlobalCep, shippings } =
-    useContext(CartContext);
+  const {
+    setCart,
+    cart,
+    totalprice,
+    setGlobalCep,
+    shippings,
+    wishlist,
+    handleWish,
+    handleUnWish,
+  } = useContext(CartContext);
   const [price, setPrice] = useState("");
   const [cep, setCep] = useState("");
   const [city, setCity] = useState("");
@@ -76,10 +86,10 @@ function ProductDetails() {
 
   const handleShipping = (type) => {
     if (type === "PAC") {
-      const pacprice = handlePac(state, city, shippings,cart);
+      const pacprice = handlePac(state, city, shippings, cart);
       setPrice(pacprice);
     } else {
-      const sedexprice = handleSedex(state, city, shippings,cart);
+      const sedexprice = handleSedex(state, city, shippings, cart);
       setPrice(sedexprice);
     }
   };
@@ -102,7 +112,25 @@ function ProductDetails() {
             </div>
 
             <div className="rightmenu">
+              {wishlist.some((id) => id === product._id) ? (
+                <img
+                  className="heart"
+                  src={redheart}
+                  onClick={() => handleUnWish(product._id)}
+                ></img>
+              ) : (
+                <img
+                  className="heart"
+                  src={heart}
+                  onClick={() => handleWish(product._id)}
+                ></img>
+              )}
+
               <h2>{product.title}</h2>
+              <img
+                className="imagemobile"
+                src={urlFor(product.image[imgIndex])}
+              ></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <p className="description">{product.description}</p>
 
@@ -115,6 +143,12 @@ function ProductDetails() {
                   </button>
                 </div>
               )}
+
+              <div  className="wpbutton">
+                <a href="https://wa.me/554196078718">
+                  Comprar pelo Whatsapp
+                </a>
+              </div>
 
               <div className="shippingcontainer">
                 <div className="buttoncontainer">

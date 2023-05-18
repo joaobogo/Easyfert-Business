@@ -19,7 +19,7 @@ const ShoppingCartContainer = styled.div`
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    border-color: #febc30;
+    
   }
 
   .buybutton:hover {

@@ -21,7 +21,7 @@ export default function App() {
       navigate("/");
     } else {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:4242/create-payment-intent", {
+      fetch("https://660tb6651b.execute-api.sa-east-1.amazonaws.com/stripe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

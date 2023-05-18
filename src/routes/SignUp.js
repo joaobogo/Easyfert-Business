@@ -16,11 +16,12 @@ const key = process.env.REACT_APP_CRYPTO;
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
+  const [email2, setEmail2] = useState("");
   const { totalprice, globalCep, setCustomerData, setIsLoggedIn } =
     useContext(CartContext);
   const [lastName, setLastName] = useState("");
   const [cep, setCEP] = useState(globalCep);
+  const [cpf,setCPF] = useState("")
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
@@ -30,7 +31,9 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [response, setResponse] = useState("");
+  const [response2, setResponse2] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const [birthday, setBirthday] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,8 +70,9 @@ function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password === password2) {
+    if (password === password2 && email === email2) {
       setResponse("");
+      setResponse2("");
       setIsLoading(true);
       const encrypted = CryptoJS.HmacSHA1(password, key).toString();
       const customer = {
@@ -79,10 +83,15 @@ function SignUp() {
         orders: [],
         password: encrypted,
         phone_number: phonenumber,
+        cpf:cpf,
+        birthday:birthday,
       };
       createCustomer(customer);
     } else {
       setResponse("As senhas não são iguais");
+    }
+    if(email != email2){
+      setResponse2("Os emails não são iguais");
     }
   };
 
@@ -127,6 +136,13 @@ function SignUp() {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
           ></input>
+          <input
+          className="emailinput"
+            placeholder="Confirmar Email *"
+            value={email2}
+            onChange={(e) => setEmail2(e.target.value)}
+            type="email"
+          ></input>
           <div className="row">
             <input
               placeholder="(11) 00000-0000 *"
@@ -138,6 +154,20 @@ function SignUp() {
               placeholder="CEP *"
               value={cep}
               onChange={handleCep}
+              type="text"
+            ></input>
+          </div>
+          <div className="row">
+            <input
+              placeholder="Data de Nascimento *"
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+              type="tel"
+            ></input>
+            <input
+              placeholder="CPF *"
+              value={cpf}
+              onChange={(e)=>setCPF(e.target.value)}
               type="text"
             ></input>
           </div>
@@ -196,6 +226,8 @@ function SignUp() {
           </div>
         </form>
         <p>{response}</p>
+        <p>{response2}</p>
+
       </CheckoutContainer>
       <Footer />
       <Lowfooter />

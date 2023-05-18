@@ -7,12 +7,18 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LowFooter from "../components/Lowfooter";
+import WhatsappBtn from "../components/WhatsappBtn.js";
 
 const key = process.env.REACT_APP_CRYPTO;
 
 function Login({ children }) {
-  const { customerData, setCustomerData, isLoggedIn, setIsLoggedIn, setCustomerKey } =
-    useContext(CartContext);
+  const {
+    customerData,
+    setCustomerData,
+    isLoggedIn,
+    setIsLoggedIn,
+    setCustomerKey,
+  } = useContext(CartContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState("");
@@ -33,7 +39,7 @@ function Login({ children }) {
           phone_number: existinguser.phone_number,
           _id: existinguser._id,
         });
-        setCustomerKey(existinguser._id)
+        setCustomerKey(existinguser._id);
         setIsLoggedIn(true);
       } else {
         setResponse("Login Inválido");
@@ -49,10 +55,10 @@ function Login({ children }) {
         <>
           <Header />
           <LoginContainer>
-            <form>
-              <div className="title">
-                <h2>Login</h2>
-              </div>
+          
+            <form className="left">
+              <h2>Já sou cadastrado</h2>
+
               <p>Email:</p>
               <input
                 placeholder="Email"
@@ -67,11 +73,22 @@ function Login({ children }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
+              <div className="buttoncontainer">
               <button onClick={handleLogin}>Login</button>
+              </div>
               <p className="response">{response}</p>
-              <Link to="/signup">Novo aqui? Crie uma conta</Link>
+            </form>
+
+            <form className="right">
+              <h2>Ainda não possuo cadastro</h2>
+              <p>Digite o email que você deseja cadastrar:</p>
+              <input placeholder="Email"></input>
+              <div className="signupbutton">
+              <Link to="/signup">Cadastrar</Link>
+              </div>
             </form>
           </LoginContainer>
+          <WhatsappBtn />
           <Footer />
           <LowFooter />
         </>

@@ -19,6 +19,18 @@ const ProductCardContainer = styled.div`
   padding: 10px;
   max-width: 20%;
 
+  .heart {
+    position: relative;
+    left: 80px;
+    top: 45px;
+    width: 25%;
+    z-index: 100;
+  }
+
+  .heart:hover {
+    cursor: pointer;
+  }
+
   :hover {
     border: solid 1px #344e41;
     transition: 0.2s;
@@ -36,7 +48,6 @@ const ProductCardContainer = styled.div`
     justify-content: space-evenly;
     gap: 5px;
     width: 100%;
-
   }
 
   .buybutton {
@@ -120,6 +131,18 @@ const ProductCardContainer = styled.div`
   @media (max-width: 768px) {
     max-width: 35%;
     margin: 2%;
+height: 30vh;
+
+    .heart {
+      position: relative;
+      left: 55px;
+      top: 15px;
+      width: 25%;
+    }
+
+    span{
+      font-size: 12px;
+    }
 
     .buybutton {
       width: 100%;
@@ -139,22 +162,23 @@ const ProductCardContainer = styled.div`
 
     img {
       margin: 0;
-      transform: scale(.8);
+      transform: scale(0.8);
     }
 
     p {
       font-size: 12px;
-     
     }
 
     .buttoncontainer {
       display: flex;
       flex-direction: column;
-   
+      margin-bottom: 2vh;
     }
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 380px) {
+height: 40vh;
+
   }
 `;
 

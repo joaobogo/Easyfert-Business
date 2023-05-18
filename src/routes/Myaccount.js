@@ -5,15 +5,18 @@ import CustomerOrder from "../components/CustomerOrder";
 import UserProfileContainer from "../components/styles/UserProfile.styles";
 import { Link } from "react-router-dom";
 import UserHeader from "../components/UserHeader";
+import AccountData from "../components/AccountData";
 
-function UserProfile() {
+function Myaccount() {
   const [orders, setOrders] = useState([]);
   const { customerData } = useContext(CartContext);
+
 
   return (
     <div>
       <UserHeader />
       <UserProfileContainer>
+
         <div className="leftbar">
           <div className="button2">
             <Link to="/">Página Inicial</Link>
@@ -31,15 +34,18 @@ function UserProfile() {
             <Link to="/wishlist">Meus Favoritos</Link>
           </div>
         </div>
+
+
         <div className="orderdetails">
-          {customerData.orders &&
-            customerData.orders.map((id) => {
-              return <CustomerOrder key={id} id={id} />;
+          {customerData &&
+            customerData.map((id) => {
+              return <AccountData key={id} id={id} />;
             })}
         </div>
+        
       </UserProfileContainer>
     </div>
   );
 }
 
-export default UserProfile;
+export default Myaccount;

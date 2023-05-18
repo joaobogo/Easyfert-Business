@@ -19,7 +19,7 @@ function KitProducts() {
     
   return (
     <ProductContainer>
-      <h1 className="kittitle">Kits</h1>
+      <h1  id='kits' name='kits' className="kittitle">Kits</h1>
       <MapContainer>
         {kits.map((kit) => ( 
           <ProductCard key={kit._id} product={kit} />

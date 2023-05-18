@@ -8,6 +8,8 @@ console.log(savedCart);
 const initialCart = savedCart ? JSON.parse(savedCart) : [];
 const id = localStorage.getItem("orderId");
 const customerKey = localStorage.getItem("customerKey");
+const savedWishList = localStorage.getItem("newWishList");
+const initialWishList = savedWishList ? JSON.parse(savedWishList) : [];
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState(initialCart);
@@ -20,6 +22,7 @@ function CartProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(!!customerKey);
   const [customerId, setCustomerId] = useState(customerKey);
   const [sanityprod, setSanityProd] = useState([]);
+  const [wishlist, setWishList] = useState(initialWishList);
 
   useEffect(() => {
     client.fetch('*[_type=="shipping"]').then((prices) => {
@@ -35,6 +38,26 @@ function CartProvider({ children }) {
     localStorage.setItem("customerKey", key);
     setCustomerId(key);
   };
+
+const handleWish = (id) => {
+setWishList((prevlist)=> {
+  const newWishList = [...prevlist,id]
+  localStorage.setItem('newWishList',JSON.stringify(newWishList))
+  if(customerData._id){
+    client.patch(customerData._id).set({wishlist:newWishList}).commit()
+  }
+  return newWishList
+})}
+
+const handleUnWish = (id) =>{
+  setWishList((prevlist)=> {
+    const newWishList = prevlist.filter((item)=>item !== id)
+    localStorage.setItem('newWishList',JSON.stringify(newWishList))
+    if(customerData._id){
+      client.patch(customerData._id).set({wishlist:newWishList}).commit()
+    }
+    return newWishList
+})}
 
   const globalState = {
     cart,
@@ -55,6 +78,9 @@ function CartProvider({ children }) {
     setIsLoggedIn,
     setCustomerKey,
     sanityprod,
+    wishlist,
+    handleWish,
+    handleUnWish,
   };
 
   return (

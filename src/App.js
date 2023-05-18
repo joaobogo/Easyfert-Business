@@ -18,7 +18,8 @@ import Login from "./routes/Login";
 import Inventory from "./routes/Inventory";
 import Blog from "./routes/Blog";
 import Blogdetails from "./routes/Blogdetails";
-
+import Wishlist from "./routes/Wishlist";
+import Myaccount from "./routes/Myaccount";
 
 function App() {
   return (
@@ -65,6 +66,8 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/blog/:id" element={<Blogdetails />} />
+            <Route path="/wishlist" element={<Wishlist/>} />
+            <Route path="/myaccount" element={<Myaccount/>} />
           </Routes>
         </BrowserRouter>
       </Adminprovider>

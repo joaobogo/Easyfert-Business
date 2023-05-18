@@ -29,10 +29,16 @@ function UserProfile() {
             <Link to="/">Página Inicial</Link>
           </div>
           <div className="button2">
+            <Link to="/myaccount">Minha Conta</Link>
+          </div>
+          <div className="button2">
             <Link to="/userprofile">Pedidos Realizados</Link>
           </div>
           <div className="button2">
             <Link to="/blog">Notícias Easyfert</Link>
+          </div>
+          <div className="button2">
+            <Link to="/wishlist">Meus Favoritos</Link>
           </div>
         </div>
 

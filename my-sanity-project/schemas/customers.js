@@ -30,10 +30,25 @@ export default {
       type: 'string',
     },
     {
+      name: 'cpf',
+      title: 'CPF',
+      type: 'string',
+    },
+    {
+      name: 'birthday',
+      title: 'Birthday',
+      type: 'string',
+    },
+    {
         name: 'password',
         title: 'Password',
         type: 'string',
     },
-
+    {
+      name: 'wishlist',
+      title: 'WishList',
+      type: 'array',
+      of: [{type: 'string'}],
+  },
   ],
 }
