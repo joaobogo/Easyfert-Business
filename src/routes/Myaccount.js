@@ -37,10 +37,10 @@ function Myaccount() {
 
 
         <div className="orderdetails">
-          {customerData &&
+          {/* {customerData &&
             customerData.map((id) => {
               return <AccountData key={id} id={id} />;
-            })}
+            })} */}
         </div>
         
       </UserProfileContainer>

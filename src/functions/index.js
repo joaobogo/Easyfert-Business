@@ -82,11 +82,26 @@ export const handleSedex = (state, city, shippings, cart) => {
   return shipping.price * countQuantity(cart);
 };
 
+
+export const getBlingToken = async () => {
+  const url = 'https://660tb6651b.execute-api.sa-east-1.amazonaws.com/bling?frontend=true'
+const res = await axios.get(url)
+return res.data.token
+}
+
 export const getBlingProducts = async () => {
   const apikey = process.env.REACT_APP_BLING;
   const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
+  
   const response = await axios.get(URL);
-  return response;
+  if (response.status === 200){
+    return response;
+  } 
+  const token = await getBlingToken()
+  const authorization = `Bearer ${token}`
+  const headers = {authorization}
+  const data = await axios.get(url,{headers})
+  return data
 };
 
 export const getString = (block) => {
