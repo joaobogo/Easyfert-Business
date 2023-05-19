@@ -64,10 +64,10 @@ function CheckoutForm() {
     setPaymentType(e.target.value);
   };
 
-const updateCustomer = (orderKey) => {
-  const neworders = [...customerData.orders, orderKey]
-  client.patch(customerData._id).set({orders:neworders}).commit()
-} 
+  const updateCustomer = (orderKey) => {
+    const neworders = [...customerData.orders, orderKey];
+    client.patch(customerData._id).set({ orders: neworders }).commit();
+  };
 
   const createOrder = (order, paymenturl) => {
     client.create(order).then((orderinfo) => {
@@ -158,10 +158,10 @@ const updateCustomer = (orderKey) => {
 
   const calculateShipping = (type) => {
     if (type === "PAC") {
-      const pacprice = handlePac(state, city, shippings,cart);
+      const pacprice = handlePac(state, city, shippings, cart);
       setPrice(pacprice);
     } else {
-      const sedexprice = handleSedex(state, city, shippings,cart);
+      const sedexprice = handleSedex(state, city, shippings, cart);
       setPrice(sedexprice);
     }
   };
@@ -179,7 +179,7 @@ const updateCustomer = (orderKey) => {
         });
     }
   };
-  
+
   return (
     <>
       <Header />
@@ -332,7 +332,7 @@ const updateCustomer = (orderKey) => {
             {link && <Link to="/creditcard">Pagar com Cartão de Crédito</Link>} */}
           </div>
         </form>
-{/* 
+        {/* 
         <div className="row">
           <button onClick={handleClick}>Verificar Status do Pagamento</button>
           <p className="pstatus">{paymentstatus}</p>

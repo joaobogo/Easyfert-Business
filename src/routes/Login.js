@@ -82,7 +82,7 @@ function Login({ children }) {
             <form className="right">
               <h2>Ainda não possuo cadastro</h2>
               <p>Digite o email que você deseja cadastrar:</p>
-              <input placeholder="Email"></input>
+              <input placeholder="Email" onChange={(e)=>setEmail(e.target.value)}></input>
               <div className="signupbutton">
               <Link to="/signup">Cadastrar</Link>
               </div>

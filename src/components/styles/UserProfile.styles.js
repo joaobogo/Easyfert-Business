@@ -66,6 +66,8 @@ const UserProfileContainer = styled.div`
   @media (max-width: 768px) {
     .leftbar {
       transform: scale(0.8);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .button2{

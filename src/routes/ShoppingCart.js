@@ -11,10 +11,9 @@ import Lowfooter from "../components/Lowfooter";
 import Footer from "../components/Footer";
 import FavoriteItem from "../components/FavoriteItem";
 
-
-
 const ShoppingCart = () => {
-  const { cart, totalprice, setGlobalCep, shippings,wishlist } = useContext(CartContext);
+  const { cart, totalprice, setGlobalCep, shippings, wishlist } =
+    useContext(CartContext);
   const navigate = useNavigate();
   const [cep, setCep] = useState("");
   const [city, setCity] = useState("");
@@ -28,7 +27,7 @@ const ShoppingCart = () => {
     });
     navigate("form");
   };
-  
+
   const handleCep = (e) => {
     setCep(e.target.value);
     if (e.target.value.length >= 8) {
@@ -45,10 +44,10 @@ const ShoppingCart = () => {
 
   const handleShipping = (type) => {
     if (type === "PAC") {
-      const pacprice = handlePac(state, city, shippings,cart);
+      const pacprice = handlePac(state, city, shippings, cart);
       setPrice(pacprice);
     } else {
-      const sedexprice = handleSedex(state, city, shippings,cart);
+      const sedexprice = handleSedex(state, city, shippings, cart);
       setPrice(sedexprice);
     }
   };
@@ -57,12 +56,10 @@ const ShoppingCart = () => {
     <>
       <Header />
       <ShoppingCartContainer>
-        
-          <h1>Meus Favoritos</h1>
-          {wishlist.map((id) => (
-            <FavoriteItem key={id} id={id}/>
-          ))}
-        
+        <h1>Meus Favoritos</h1>
+        {wishlist.map((id) => (
+          <FavoriteItem key={id} id={id} />
+        ))}
 
         <h1>Detalhes do Pedido</h1>
 
@@ -72,10 +69,10 @@ const ShoppingCart = () => {
         <p>Total: {formatCurrency(totalprice.toFixed(2))}</p>
 
         <div className="buttons">
-          <button disabled={!state} onClick={()=> handleShipping('PIX')}>
+          <button disabled={!state} onClick={() => handleShipping("PAC")}>
             Calcular Frete - PAC
           </button>
-          <button disabled={!state} onClick={()=> handleShipping('Sedex')}>
+          <button disabled={!state} onClick={() => handleShipping("Sedex")}>
             Calcular Frete - Sedex
           </button>
           <input placeholder="CEP" value={cep} onChange={handleCep}></input>
