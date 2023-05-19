@@ -97,11 +97,13 @@ export const getBlingProducts = async () => {
     const response = await axios.get(URL);
     return response.data;
   } catch (error) {
-    const token = await getBlingToken();
-    const authorization = `Bearer ${token}`;
-    const headers = { authorization };
-    const data = await axios.get(URL, { headers });
-    return data;
+    // const token = await getBlingToken();
+    // const authorization = `Bearer ${token}`;
+    // const headers = { authorization };
+    // const data = await axios.get(URL, { headers });
+    // return data;
+
+    return error
   }
 };
 
