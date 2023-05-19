@@ -90,22 +90,27 @@ export const getBlingToken = async () => {
 };
 
 export const getBlingProducts = async () => {
-  const apikey = process.env.REACT_APP_BLING;
-  const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
-  const token = "d9c799c9b22a15518d782762584a109965b602c1";
-  try {
-    const authorization = `Bearer ${token}`;
-    const headers = { authorization };
-    const response = await axios.get(URL, { headers });
-    return response.data;
-  } catch (error) {
-    // const token = await getBlingToken();
-    // const authorization = `Bearer ${token}`;
-    // const headers = { authorization };
-    // const data = await axios.get(URL, { headers });
-    // return data;
-    return error;
-  }
+  const url =
+    "https://660tb6651b.execute-api.sa-east-1.amazonaws.com/bling?frontend=true";
+  const res = await axios.get(url);
+  return res;
+  
+  //   const apikey = process.env.REACT_APP_BLING;
+  //   const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
+  //   const token = "d9c799c9b22a15518d782762584a109965b602c1";
+  //   try {
+  //     const authorization = `Bearer ${token}`;
+  //     const headers = { authorization };
+  //     const response = await axios.get(URL, { headers });
+  //     return response.data;
+  //   } catch (error) {
+  //     // const token = await getBlingToken();
+  //     // const authorization = `Bearer ${token}`;
+  //     // const headers = { authorization };
+  //     // const data = await axios.get(URL, { headers });
+  //     // return data;
+  //     return error;
+  //   }
 };
 
 export const getString = (block) => {
