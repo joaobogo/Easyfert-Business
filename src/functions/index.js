@@ -92,9 +92,11 @@ export const getBlingToken = async () => {
 export const getBlingProducts = async () => {
   const apikey = process.env.REACT_APP_BLING;
   const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
-
+  const token = "d9c799c9b22a15518d782762584a109965b602c1";
   try {
-    const response = await axios.get(URL);
+    const authorization = `Bearer ${token}`;
+    const headers = { authorization };
+    const response = await axios.get(URL, { headers });
     return response.data;
   } catch (error) {
     // const token = await getBlingToken();
@@ -102,8 +104,7 @@ export const getBlingProducts = async () => {
     // const headers = { authorization };
     // const data = await axios.get(URL, { headers });
     // return data;
-
-    return error
+    return error;
   }
 };
 
