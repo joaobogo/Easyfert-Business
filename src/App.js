@@ -64,6 +64,7 @@ function App() {
             />
             <Route path="/userprofile" element={<Login><UserProfile/></Login>} />
             <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/signup/:email" element={<SignUp/>}/>
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/blog/:id" element={<Blogdetails />} />
             <Route path="/wishlist" element={<Wishlist/>} />

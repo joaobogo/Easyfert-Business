@@ -6,10 +6,8 @@ import CheckoutContainer from "../components/styles/CheckoutForm.styles";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Lowfooter from "../components/Lowfooter";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CryptoJS from "crypto-js";
-
-
 
 const key = process.env.REACT_APP_CRYPTO;
 
@@ -21,7 +19,7 @@ function SignUp() {
     useContext(CartContext);
   const [lastName, setLastName] = useState("");
   const [cep, setCEP] = useState(globalCep);
-  const [cpf,setCPF] = useState("")
+  const [cpf, setCPF] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
@@ -32,11 +30,18 @@ function SignUp() {
   const [password2, setPassword2] = useState("");
   const [response, setResponse] = useState("");
   const [response2, setResponse2] = useState("");
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [birthday, setBirthday] = useState("");
   const navigate = useNavigate();
 
+  const params = useParams();
+
   useEffect(() => {
+    console.log(params);
+    if (params.email) {
+      setEmail(params.email);
+    }
+
     if (globalCep) {
       axios
         .get(`https://viacep.com.br/ws/${globalCep}/json`)
@@ -55,13 +60,13 @@ function SignUp() {
       const existinguser = customers.find((user) => user.email === email);
       if (existinguser) {
         setResponse("Já existe um cadastro com esse email");
-        setIsLoading(false)
+        setIsLoading(false);
       } else {
         client.create(customer).then((customerinfo) => {
           setCustomerData(customerinfo);
           localStorage.setItem("customerKey", customerinfo._id);
           setIsLoggedIn(true);
-          setIsLoading(false)
+          setIsLoading(false);
           navigate("/checkout/form");
         });
       }
@@ -83,14 +88,14 @@ function SignUp() {
         orders: [],
         password: encrypted,
         phone_number: phonenumber,
-        cpf:cpf,
-        birthday:birthday,
+        cpf: cpf,
+        birthday: birthday,
       };
       createCustomer(customer);
     } else {
       setResponse("As senhas não são iguais");
     }
-    if(email != email2){
+    if (email != email2) {
       setResponse2("Os emails não são iguais");
     }
   };
@@ -130,14 +135,14 @@ function SignUp() {
             ></input>
           </div>
           <input
-          className="emailinput"
+            className="emailinput"
             placeholder="Email *"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
           ></input>
           <input
-          className="emailinput"
+            className="emailinput"
             placeholder="Confirmar Email *"
             value={email2}
             onChange={(e) => setEmail2(e.target.value)}
@@ -167,7 +172,7 @@ function SignUp() {
             <input
               placeholder="CPF *"
               value={cpf}
-              onChange={(e)=>setCPF(e.target.value)}
+              onChange={(e) => setCPF(e.target.value)}
               type="text"
             ></input>
           </div>
@@ -221,13 +226,12 @@ function SignUp() {
                 !name || !email || !cep || !number || !password || !password2
               }
             >
-           { isLoading ? 'Carregando...' : "Finalizar Cadastro"}
+              {isLoading ? "Carregando..." : "Finalizar Cadastro"}
             </button>
           </div>
         </form>
         <p>{response}</p>
         <p>{response2}</p>
-
       </CheckoutContainer>
       <Footer />
       <Lowfooter />

@@ -20,6 +20,7 @@ function Login({ children }) {
     setCustomerKey,
   } = useContext(CartContext);
   const [email, setEmail] = useState("");
+  const [email2, setEmail2] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState("");
 
@@ -82,9 +83,9 @@ function Login({ children }) {
             <form className="right">
               <h2>Ainda não possuo cadastro</h2>
               <p>Digite o email que você deseja cadastrar:</p>
-              <input placeholder="Email" onChange={(e)=>setEmail(e.target.value)}></input>
+              <input placeholder="Email" value={email2} onChange={(e)=>setEmail2(e.target.value)}></input>
               <div className="signupbutton">
-              <Link to="/signup">Cadastrar</Link>
+              <Link to={`/signup/${email2}`}>Cadastrar</Link>
               </div>
             </form>
           </LoginContainer>

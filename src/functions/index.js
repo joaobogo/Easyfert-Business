@@ -95,22 +95,23 @@ export const getBlingProducts = async () => {
   // const headers = { "Access-Control-Allow-Origin": "*" };
   // const res = await axios.get(url, { headers });
   // return res;
-    const apikey = process.env.REACT_APP_BLING;
-    const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
-    const token = "cd4d2a2eb54ff755a0ca0589b27070e9d6472bc1";
-    try {
-      const authorization = `Bearer ${token}`;
-      const headers = { authorization };
-      const response = await axios.get(URL, { headers });
-      return response.data;
-    } catch (error) {
-      // const token = await getBlingToken();
-      // const authorization = `Bearer ${token}`;
-      // const headers = { authorization };
-      // const data = await axios.get(URL, { headers });
-      // return data;
-      return error;
-    }
+
+  const apikey = process.env.REACT_APP_BLING;
+  const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
+  const token = "cd4d2a2eb54ff755a0ca0589b27070e9d6472bc1";
+  try {
+    const authorization = `Bearer ${token}`;
+    const headers = { authorization };
+    const response = await axios.get(URL, { headers });
+    return response.data;
+  } catch (error) {
+    // const token = await getBlingToken();
+    // const authorization = `Bearer ${token}`;
+    // const headers = { authorization };
+    // const data = await axios.get(URL, { headers });
+    // return data;
+    return error;
+  }
 };
 
 export const getString = (block) => {
