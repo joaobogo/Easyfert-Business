@@ -3,7 +3,7 @@ import ProductContainer from "./styles/ProductContainer.styled";
 import { client } from "../client";
 import ProductCard from "./ProductCard";
 import MapContainer from "./styles/ProductMapContainer.styles";
-import { getBlingProducts } from "../functions";
+// import { getBlingProducts } from "../functions";
 
 function KitProducts() {
 
@@ -13,7 +13,7 @@ function KitProducts() {
     getServerSideProps().then((res) => {
       setKits(res.kits);
     });
-    getBlingProducts().then(console.log)
+    // getBlingProducts().then(console.log)
   }, []);
 
     
