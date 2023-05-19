@@ -100,7 +100,7 @@ export const getBlingProducts = async () => {
   const token = await getBlingToken()
   const authorization = `Bearer ${token}`
   const headers = {authorization}
-  const data = await axios.get(url,{headers})
+  const data = await axios.get(URL,{headers})
   return data
 };
 
