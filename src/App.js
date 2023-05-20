@@ -28,9 +28,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<About/>} />
-            <Route path="/about" element={<ShoppingCart />} />
-            <Route path="/checkout/form" element={<Login><Payment/></Login>} />
+            <Route path="/carrinho" element={<ShoppingCart/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/carrinho/form" element={<Login><Payment/></Login>} />
             <Route path="/login" element={<Login><Home/></Login>} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route
@@ -62,13 +62,13 @@ function App() {
               path="/confirmationpage/:id"
               element={<ConfirmationPage />}
             />
-            <Route path="/userprofile" element={<Login><UserProfile/></Login>} />
+            <Route path="/usuario" element={<Login><UserProfile/></Login>} />
             <Route path="/signup" element={<SignUp/>}/>
-            {/* <Route path="/signup/:email" element={<SignUp/>}/> */}
+            <Route path="/signup/:email" element={<SignUp/>}/>
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/blog/:id" element={<Blogdetails />} />
-            {/* <Route path="/wishlist" element={<Wishlist/>} />
-            <Route path="/myaccount" element={<Myaccount/>} /> */}
+            <Route path="/wishlist" element={<Wishlist/>} />
+            <Route path="/myaccount" element={<Myaccount/>} />
           </Routes>
         </BrowserRouter>
       </Adminprovider>

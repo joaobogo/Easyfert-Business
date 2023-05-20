@@ -33,10 +33,10 @@ function Header() {
         >
           <FaInstagram />
         </a>
-        <a className="icon" href="/checkout">
+        <a className="icon" href="/carrinho">
           <FaShoppingCart />
         </a>
-        <a className="icon" href="/userprofile">
+        <a className="icon" href="/usuario">
           <FaUser />
         </a>
       </div>
