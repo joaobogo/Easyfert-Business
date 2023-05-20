@@ -29,7 +29,7 @@ export default function Stripe() {
         }),
       })
         .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
+        .then((data) => {console.log(data); setClientSecret(data.clientSecret)});
     }
   }, []);
 
