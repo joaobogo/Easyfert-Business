@@ -28,7 +28,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<p>teste</p>} />
+            <Route path="/checkout" element={<About/>} />
             <Route path="/about" element={<About />} />
             <Route path="/checkout/form" element={<Login><Payment/></Login>} />
             <Route path="/login" element={<Login><Home/></Login>} />
@@ -64,11 +64,11 @@ function App() {
             />
             <Route path="/userprofile" element={<Login><UserProfile/></Login>} />
             <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/signup/:email" element={<SignUp/>}/>
+            {/* <Route path="/signup/:email" element={<SignUp/>}/> */}
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/blog/:id" element={<Blogdetails />} />
-            <Route path="/wishlist" element={<Wishlist/>} />
-            <Route path="/myaccount" element={<Myaccount/>} />
+            {/* <Route path="/wishlist" element={<Wishlist/>} />
+            <Route path="/myaccount" element={<Myaccount/>} /> */}
           </Routes>
         </BrowserRouter>
       </Adminprovider>
