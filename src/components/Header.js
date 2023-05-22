@@ -22,9 +22,9 @@ function Header() {
         </a>
       </div>
 
-      <div className="rightside">
+      {/* <div className="rightside">
       <FaSearch className="search"/>
-        <input placeholder="O que você busca?"></input>
+        <input placeholder="O que você busca?"></input> */}
         
         <a
           className="icon"
