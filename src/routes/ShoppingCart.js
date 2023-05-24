@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import Lowfooter from "../components/Lowfooter";
 import Footer from "../components/Footer";
 import FavoriteItem from "../components/FavoriteItem";
+import FavoritesCart from "../components/FavoritesCart";
 
 const ShoppingCart = () => {
   const { cart, totalprice, setGlobalCep, shippings, wishlist } =
@@ -58,7 +59,7 @@ const ShoppingCart = () => {
       <ShoppingCartContainer>
         <h1>Meus Favoritos</h1>
         {wishlist.map((id) => (
-          <FavoriteItem key={id} id={id} />
+          <FavoritesCart key={id} id={id} />
         ))}
 
         <h1>Detalhes do Pedido</h1>

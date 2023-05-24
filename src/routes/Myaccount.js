@@ -25,7 +25,7 @@ function Myaccount() {
             <Link to="/myaccount">Minha Conta</Link>
           </div>
           <div className="button2">
-            <Link to="/userprofile">Pedidos Realizados</Link>
+            <Link to="/usuario">Pedidos Realizados</Link>
           </div>
           <div className="button2">
             <Link to="/blog">Notícias Easyfert</Link>
@@ -37,10 +37,9 @@ function Myaccount() {
 
 
         <div className="orderdetails">
-          {/* {customerData &&
-            customerData.map((id) => {
-              return <AccountData key={id} id={id} />;
-            })} */}
+          
+         <AccountData />;
+         
         </div>
         
       </UserProfileContainer>

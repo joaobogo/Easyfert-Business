@@ -9,13 +9,40 @@ const UserNavContainer = styled.div`
 
   img {
     transform: scale(0.6);
-   
   }
 
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 16%;
+    font-size: 10px;
+    flex-wrap: wrap;
+    width: 70%;
+    border: gray solid 1px;
+    background-color: rgba(255, 255, 255);
+    text-align: center;
+    border-top: none;
+    border-radius: 10px;
+    padding: 2px;
+  }
+
+  .rightside input {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: gray solid 1px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 5px;
+  }
+
+  form {
+    position: relative;
+  }
+  
   .title {
     display: flex;
     align-items: center;
-    
+
     font-family: "Secular One";
     color: #398879;
     font-size: 36px;
@@ -28,30 +55,27 @@ const UserNavContainer = styled.div`
     font-family: "Secular One";
     color: #398879;
     font-size: 36px;
-   
   }
-  
-.search{
-  color: #398879
-}
+
+  .search {
+    color: #398879;
+  }
 
   .leftside {
     display: flex;
   }
 
+  .rightside button {
+    background-color: none;
+    border: none;
+  }
   .rightside {
-    width: 250px;
+    width: 300px;
     display: flex;
     justify-content: space-evenly;
   }
 
-  .rightside input{
-    width: 50%;
-    background-color: rgba(255,255,255,.4);
-    border: gray solid 1px;
-    border-radius: 10px;
-    text-align: center;
-  }
+ 
   .icon {
     color: #398879;
   }
@@ -66,24 +90,23 @@ const UserNavContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-
     .title {
       font-size: 17px;
-      margin-left: -15px;;
+      margin-left: -15px;
     }
 
-    .title2{
+    .title2 {
       font-size: 26px;
       margin-left: -15px;
     }
 
-    img{
-      transform:scale(.5);
+    img {
+      transform: scale(0.5);
       margin-left: -10px;
     }
 
-    .rightside{
-      transform: scale(.8);
+    .rightside {
+      transform: scale(0.8);
     }
   }
 

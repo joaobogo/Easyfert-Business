@@ -6,7 +6,7 @@ import { formatCurrency, saveToCart } from "../functions";
 import CartItemsContainer from "./styles/CartItems.styles";
 import WishListContainer from "./styles/WishList.styles";
 
-function FavoriteItem({ id }) {
+function FavoritesCart({ id }) {
   const [data, setData] = useState(null);
   const { setCart, setTotalprice, totalprice, cart, handleWish, handleUnWish } =
     useContext(CartContext);
@@ -35,7 +35,7 @@ function FavoriteItem({ id }) {
     <>
      
       {data ? (
-        <WishListContainer>
+        <CartItemsContainer>
           <img src={urlFor(data.image[0])}></img>
           <p>{data.title}</p>
           <p>{formatCurrency(data.price)}</p>
@@ -45,7 +45,7 @@ function FavoriteItem({ id }) {
           <button className="delete" onClick={() => handleUnWish(id)}>
             X
           </button>
-        </WishListContainer>
+        </CartItemsContainer>
       ) : (
         <span>Carregando...</span>
       )}
@@ -57,4 +57,4 @@ const getById = async (id) => {
   const product = await client.getDocument(id);
   return product;
 };
-export default FavoriteItem;
+export default FavoritesCart;

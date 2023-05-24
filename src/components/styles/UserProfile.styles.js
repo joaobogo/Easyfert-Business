@@ -24,6 +24,8 @@ const UserProfileContainer = styled.div`
   .orderdetails {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .button {
@@ -60,6 +62,11 @@ const UserProfileContainer = styled.div`
     color: white;
   }
 
+  .wishh1{
+    font-size: 44px;
+    color: white;
+    margin-bottom: -10px;
+  }
   @media (max-width: 1250px) {
   }
 
