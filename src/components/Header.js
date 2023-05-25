@@ -51,13 +51,13 @@ function Header() {
             placeholder="O que você busca?"
           ></input>
 
-          <div className="dropdown">
+          {/* <div className="dropdown">
             {products.map((product) => (
               <Link key={product._id} to={`product/${product._id}`}>
                 {product.title}
               </Link>
             ))}
-          </div>
+          </div> */}
 
         </form>
 
