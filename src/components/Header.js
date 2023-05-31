@@ -40,7 +40,7 @@ function Header() {
 
       <div className="rightside">
 
-        <form onSubmit={searchClick}>
+        {/* <form onSubmit={searchClick}>
           <button type="submit">
             <FaSearch className="search" />
           </button>
@@ -59,7 +59,7 @@ function Header() {
             ))}
           </div> */}
 
-        </form>
+        </form> */}
 
         <a
           className="icon"
