@@ -39,8 +39,8 @@ function Header() {
       </div>
 
       <div className="rightside">
-
-        {/* <form onSubmit={searchClick}>
+ 
+         {/* <form onSubmit={searchClick}>
           <button type="submit">
             <FaSearch className="search" />
           </button>
@@ -51,15 +51,15 @@ function Header() {
             placeholder="O que você busca?"
           ></input>
 
-          {/* <div className="dropdown">
+          <div className="dropdown">
             {products.map((product) => (
               <Link key={product._id} to={`product/${product._id}`}>
                 {product.title}
               </Link>
             ))}
-          </div> */}
+          </div> 
 
-        </form> */}
+        </form>  */}
 
         <a
           className="icon"
