@@ -16,7 +16,6 @@ function CustomerOrder({ id }) {
     if (sanityprod.length > 0 && order.products) {
       const items = order.products.map((prod) => {
         const [id, quantity] = prod.split("_");
-        console.log(id);
         const { title, price } = sanityprod.find((product) => {
           return product._id === id;
         });

@@ -12,7 +12,7 @@ function Products() {
     getServerSideProps().then((res) => {
       setProducts(res.products);
     });
-    // getBlingProducts().then(console.log)
+    getBlingProducts().then(console.log)
   }, []);
 
     
