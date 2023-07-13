@@ -92,8 +92,7 @@ export const getBlingToken = async () => {
 export const getBlingProducts = async () => {
   const url =
     "https://660tb6651b.execute-api.sa-east-1.amazonaws.com/bling?frontend=true";
-  const headers = { "Access-Control-Allow-Origin": "*" };
-  const res = await axios.get(url, { headers });
+  const res = await axios.get(url);
   return res;
 
   // const apikey = process.env.REACT_APP_BLING;
