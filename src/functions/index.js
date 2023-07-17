@@ -93,7 +93,8 @@ export const getBlingProducts = async () => {
   const url =
     "https://easyfert.onrender.com/bling?frontend=true";
   const res = await axios.get(url);
-  return res;
+  const blingRes = JSON.parse(res.data.blingResponse)
+  return blingRes;
 
   // const apikey = process.env.REACT_APP_BLING;
   // const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
