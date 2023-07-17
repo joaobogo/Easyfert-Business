@@ -84,14 +84,14 @@ export const handleSedex = (state, city, shippings, cart) => {
 
 export const getBlingToken = async () => {
   const url =
-    "https://660tb6651b.execute-api.sa-east-1.amazonaws.com/bling?frontend=true";
+    "https://easyfert.onrender.com/bling?frontend=true";
   const res = await axios.get(url);
   return res.data.token;
 };
 
 export const getBlingProducts = async () => {
   const url =
-    "https://660tb6651b.execute-api.sa-east-1.amazonaws.com/bling?frontend=true";
+    "https://easyfert.onrender.com/bling?frontend=true";
   const res = await axios.get(url);
   return res;
 
