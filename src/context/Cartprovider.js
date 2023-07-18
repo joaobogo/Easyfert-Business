@@ -33,19 +33,21 @@ function CartProvider({ children }) {
       setSanityProd(products);
     });
     client.fetch('*[_type=="token"]').then((token) => {
-      console.log(token)
+      console.log(token);
       setTokenData(token[0]);
+      getBlingProducts(token[0],handleToken).then(console.log)
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
 
-
-const handleToken = (data)=>{
-  const { access_token, refresh_token, expires_in } = data;
-  setTokenData(data);
-  client.patch(tokenData._id).set({ access_token, refresh_token, expires_in }).commit();
-}
-
+  const handleToken = (data) => {
+    const { access_token, refresh_token, expires_in } = data;
+    setTokenData(data);
+    client
+      .patch(tokenData._id)
+      .set({ access_token, refresh_token, expires_in })
+      .commit();
+  };
 
   const setCustomerKey = (key) => {
     localStorage.setItem("customerKey", key);
@@ -98,7 +100,7 @@ const handleToken = (data)=>{
     handleUnWish,
     tokenData,
     setTokenData,
-    handleToken
+    handleToken,
   };
 
   return (

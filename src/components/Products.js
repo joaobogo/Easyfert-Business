@@ -15,7 +15,7 @@ const {tokenData, handleToken} = useContext(CartContext)
     getServerSideProps().then((res) => {
       setProducts(res.products);
     });
-    getBlingProducts(tokenData,handleToken).then(console.log)
+    // getBlingProducts(tokenData,handleToken).then(console.log)
   }, []);
 
     

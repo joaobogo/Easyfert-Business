@@ -13,7 +13,7 @@ function KitProducts() {
     getServerSideProps().then((res) => {
       setKits(res.kits);
     });
-    getBlingProducts().then(console.log)
+    // getBlingProducts().then(console.log)
   }, []);
 
     
