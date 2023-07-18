@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { getsum } from "../functions";
 import Cartcontext from "./Cartcontext";
 import { client } from "../client";
+import { getBlingProducts } from "../functions";
+
+
 
 const savedCart = localStorage.getItem("newcart");
 console.log(savedCart);
