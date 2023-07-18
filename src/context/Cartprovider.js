@@ -33,6 +33,7 @@ function CartProvider({ children }) {
       setSanityProd(products);
     });
     client.fetch('*[_type=="token"]').then((token) => {
+      console.log(token)
       setTokenData(token[0]);
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
