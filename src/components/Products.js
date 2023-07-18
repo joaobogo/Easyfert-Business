@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductContainer from "./styles/ProductContainer.styled";
 import { client } from "../client";
 import ProductCard from "./ProductCard";
 import MapContainer from "./styles/ProductMapContainer.styles";
 import { getBlingProducts } from "../functions";
+import CartContext from "../context/Cartcontext";
 
 function Products() {
   const [products, setProducts] = useState([]);
+const {tokenData, handleToken} = useContext(CartContext)
+
 
   useEffect(() => {
     getServerSideProps().then((res) => {
       setProducts(res.products);
     });
-    getBlingProducts().then(console.log)
+    getBlingProducts(tokenData,handleToken).then(console.log)
   }, []);
 
     

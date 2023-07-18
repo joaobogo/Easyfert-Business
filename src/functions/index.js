@@ -83,17 +83,23 @@ export const handleSedex = (state, city, shippings, cart) => {
 };
 
 export const getBlingToken = async () => {
-  const url =
-    "https://easyfert.onrender.com/bling?frontend=true";
+  const url = "https://easyfert.onrender.com/bling?frontend=true";
   const res = await axios.get(url);
   return res.data.token;
 };
 
-export const getBlingProducts = async () => {
-  const url =
-    "https://easyfert.onrender.com/bling?frontend=true";
+export const getBlingProducts = async (tokenData, handleToken) => {
+  const { access_token, refresh_token, expires_in } = tokenData;
+  const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
+  let url = `${BaseUrl}&refresh_token=${refresh_token}`;
+  if (expires_in > Date.now()) {
+    url = `${BaseUrl}&access_token=${access_token}`;
+  }
   const res = await axios.get(url);
-  const blingRes = JSON.parse(res.data.blingResponse)
+  if (res.data.token !== access_token) {
+    handleToken(res.data.tokenData);
+  }
+  const blingRes = JSON.parse(res.data.blingResponse);
   return blingRes;
 
   // const apikey = process.env.REACT_APP_BLING;

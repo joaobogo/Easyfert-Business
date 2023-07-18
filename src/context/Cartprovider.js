@@ -23,6 +23,7 @@ function CartProvider({ children }) {
   const [customerId, setCustomerId] = useState(customerKey);
   const [sanityprod, setSanityProd] = useState([]);
   const [wishlist, setWishList] = useState(initialWishList);
+  const [tokenData, setTokenData] = useState({});
 
   useEffect(() => {
     client.fetch('*[_type=="shipping"]').then((prices) => {
@@ -31,33 +32,46 @@ function CartProvider({ children }) {
     client.fetch('*[_type=="product"]').then((products) => {
       setSanityProd(products);
     });
+    client.fetch('*[_type=="token"]').then((token) => {
+      setTokenData(token[0]);
+    });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
+
+
+const handleToken = (data)=>{
+  const { access_token, refresh_token, expires_in } = data;
+  setTokenData(data);
+  client.patch(tokenData._id).set({ access_token, refresh_token, expires_in }).commit();
+}
+
 
   const setCustomerKey = (key) => {
     localStorage.setItem("customerKey", key);
     setCustomerId(key);
   };
 
-const handleWish = (id) => {
-setWishList((prevlist)=> {
-  const newWishList = [...prevlist,id]
-  localStorage.setItem('newWishList',JSON.stringify(newWishList))
-  if(customerData._id){
-    client.patch(customerData._id).set({wishlist:newWishList}).commit()
-  }
-  return newWishList
-})}
+  const handleWish = (id) => {
+    setWishList((prevlist) => {
+      const newWishList = [...prevlist, id];
+      localStorage.setItem("newWishList", JSON.stringify(newWishList));
+      if (customerData._id) {
+        client.patch(customerData._id).set({ wishlist: newWishList }).commit();
+      }
+      return newWishList;
+    });
+  };
 
-const handleUnWish = (id) =>{
-  setWishList((prevlist)=> {
-    const newWishList = prevlist.filter((item)=>item !== id)
-    localStorage.setItem('newWishList',JSON.stringify(newWishList))
-    if(customerData._id){
-      client.patch(customerData._id).set({wishlist:newWishList}).commit()
-    }
-    return newWishList
-})}
+  const handleUnWish = (id) => {
+    setWishList((prevlist) => {
+      const newWishList = prevlist.filter((item) => item !== id);
+      localStorage.setItem("newWishList", JSON.stringify(newWishList));
+      if (customerData._id) {
+        client.patch(customerData._id).set({ wishlist: newWishList }).commit();
+      }
+      return newWishList;
+    });
+  };
 
   const globalState = {
     cart,
@@ -81,6 +95,9 @@ const handleUnWish = (id) =>{
     wishlist,
     handleWish,
     handleUnWish,
+    tokenData,
+    setTokenData,
+    handleToken
   };
 
   return (
