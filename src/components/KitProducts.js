@@ -4,16 +4,19 @@ import { client } from "../client";
 import ProductCard from "./ProductCard";
 import MapContainer from "./styles/ProductMapContainer.styles";
 import { getBlingProducts } from "../functions";
+import CartContext from "../context/Cartcontext";
 
 function KitProducts() {
-
+  const { tokenData, handleToken } = useContext(CartContext);
   const [kits, setKits] = useState([]);
 
   useEffect(() => {
-    getServerSideProps().then((res) => {
+    // getServerSideProps().then((res) => {
+    //   setKits(res.kits);
+    // });
+    getBlingProducts(tokenData,handleToken).then((res)=>{
       setKits(res.kits);
-    });
-    // getBlingProducts().then(console.log)
+    })
   }, []);
 
     

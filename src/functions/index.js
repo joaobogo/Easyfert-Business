@@ -100,8 +100,8 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     handleToken(res.data.tokenData);
   }
   const blingRes = JSON.parse(res.data.blingResponse);
-  console.log(blingRes)
-  const products = blingRes.data.retorno.produtos.map(({produto})=>({
+  console.log(blingRes);
+  const products = blingRes.data.retorno.produtos.map(({ produto }) => ({
     _id: produto.codigo,
     image: produto.imageThumbnail,
     title: produto.descricao,
@@ -111,10 +111,14 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     quantity: produto.estoqueAtual,
     tags: [],
     availability: produto.situacao,
-    brand: produto.marca
-  }))
-  console.log(products)
-  return {products};
+    brand: produto.marca,
+    kit: produto.volumes > 1,
+  }));
+  console.log(products);
+  return {
+    products: products.filter(({ kit }) => !kit),
+    kits: products.filter(({ kit }) => kit),
+  };
 
   // const apikey = process.env.REACT_APP_BLING;
   // const URL = `https://bling.com.br/Api/v2/produtos/json?apikey=${apikey}`;
@@ -142,5 +146,3 @@ export const getString = (block) => {
   }
   return result;
 };
-
-
