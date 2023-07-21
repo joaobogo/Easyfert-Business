@@ -92,9 +92,9 @@ export const getBlingProducts = async (tokenData, handleToken) => {
   const { access_token, refresh_token, expires_in } = tokenData;
   const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
   let url = `${BaseUrl}&refresh_token=${refresh_token}`;
-  // if (expires_in > Date.now()) {
-  //   url = `${BaseUrl}&access_token=${access_token}`;
-  // }
+  if (expires_in > Date.now()) {
+    url = `${BaseUrl}&access_token=${access_token}`;
+  }
   const res = await axios.get(url);
   if (res.data.token !== access_token) {
     handleToken(res.data.tokenData);
