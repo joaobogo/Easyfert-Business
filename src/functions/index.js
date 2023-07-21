@@ -112,6 +112,7 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     availability: produto.situacao,
     brand: produto.marca
   }))
+  console.log(products)
   return {products};
 
   // const apikey = process.env.REACT_APP_BLING;
