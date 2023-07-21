@@ -108,7 +108,7 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     description: produto.descricaoCurta,
     description2: produto.descricaoComplementar,
     quantity: produto.estoqueAtual,
-    tags: [produto.categoria.descricao],
+    tags: [],
     availability: produto.situacao,
     brand: produto.marca
   }))
