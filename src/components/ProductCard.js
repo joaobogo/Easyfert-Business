@@ -38,7 +38,7 @@ function ProductCard({ product }) {
 
       <Link to={`product/${product._id}`}>
         {product.image && product.image.length && (
-          <img src={urlFor(product.image[0])} />
+          <img src={product.image} />
         )}
 
         <h3>{product.title}</h3>

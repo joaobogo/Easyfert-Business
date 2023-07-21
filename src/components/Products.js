@@ -8,17 +8,17 @@ import CartContext from "../context/Cartcontext";
 
 function Products() {
   const [products, setProducts] = useState([]);
-const {tokenData, handleToken} = useContext(CartContext)
-
+  const { tokenData, handleToken } = useContext(CartContext);
 
   useEffect(() => {
-    getServerSideProps().then((res) => {
+    // getServerSideProps().then((res) => {
+    //   setProducts(res.products);
+    // });
+    getBlingProducts(tokenData,handleToken).then((res)=>{
       setProducts(res.products);
-    });
-    // getBlingProducts(tokenData,handleToken).then(console.log)
+    })
   }, []);
 
-    
   return (
     <ProductContainer>
       <h1>Mais Vendidos</h1>
@@ -31,11 +31,11 @@ const {tokenData, handleToken} = useContext(CartContext)
   );
 }
 
-const getServerSideProps = async () => {
-  const products = await client.fetch('*[_type=="product"]');
-  return {
-    products,
-  };
-};
+// const getServerSideProps = async () => {
+//   const products = await client.fetch('*[_type=="product"]');
+//   return {
+//     products,
+//   };
+// };
 
 export default Products;
