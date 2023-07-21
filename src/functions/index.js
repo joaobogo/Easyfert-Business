@@ -100,7 +100,6 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     handleToken(res.data.tokenData);
   }
   const blingRes = JSON.parse(res.data.blingResponse);
-  console.log(blingRes);
   const products = blingRes.data.retorno.produtos.map(({ produto }) => ({
     _id: produto.codigo,
     image: produto.imageThumbnail,
@@ -114,7 +113,7 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     brand: produto.marca,
     kit: produto.volumes > 1,
   }));
-  console.log(products);
+
   return {
     products: products.filter(({ kit }) => !kit),
     kits: products.filter(({ kit }) => kit),

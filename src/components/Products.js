@@ -15,6 +15,7 @@ function Products() {
     //   setProducts(res.products);
     // });
     getBlingProducts(tokenData,handleToken).then((res)=>{
+      console.log(res)
       setProducts(res.products);
     })
   }, []);
