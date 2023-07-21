@@ -101,7 +101,7 @@ export const getBlingProducts = async (tokenData, handleToken) => {
   }
   const blingRes = JSON.parse(res.data.blingResponse);
   console.log(blingRes)
-  const products = blingRes.data.retorno.produtos.map((produto)=>({
+  const products = blingRes.data.retorno.produtos.map(({produto})=>({
     _id: produto.codigo,
     image: produto.imageThumbnail,
     title: produto.descricao,
