@@ -14,11 +14,12 @@ function Products() {
     // getServerSideProps().then((res) => {
     //   setProducts(res.products);
     // });
-    getBlingProducts(tokenData,handleToken).then((res)=>{
-      console.log(res)
+    if (!tokenData.expires_in) return;
+    getBlingProducts(tokenData, handleToken).then((res) => {
+      console.log(res);
       setProducts(res.products);
-    })
-  }, []);
+    });
+  }, [tokenData]);
 
   return (
     <ProductContainer>

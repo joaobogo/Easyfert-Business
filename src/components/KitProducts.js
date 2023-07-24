@@ -14,10 +14,11 @@ function KitProducts() {
     // getServerSideProps().then((res) => {
     //   setKits(res.kits);
     // });
+    if(!tokenData.expires_in) return;
     getBlingProducts(tokenData,handleToken).then((res)=>{
       setKits(res.kits);
     })
-  }, []);
+  }, [tokenData]);
 
     
   return (
