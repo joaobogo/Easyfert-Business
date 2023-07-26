@@ -78,6 +78,8 @@ function CheckoutForm() {
         window.location.href = paymenturl;
       }
     });
+updateBling(order.products)
+
   };
 
   const postPayment = (body) => {

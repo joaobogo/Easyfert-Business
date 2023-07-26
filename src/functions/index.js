@@ -92,18 +92,18 @@ export const getBlingProducts = async (tokenData, handleToken) => {
   const { access_token, refresh_token, expires_in } = tokenData;
   const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
   let url = `${BaseUrl}&refresh_token=${refresh_token}`;
-  if (expires_in > Date.now()) {
-    url = `${BaseUrl}&access_token=${access_token}`;
-  }
+  // if (expires_in > Date.now()) {
+  url = `${BaseUrl}&access_token=${access_token}`;
+  // }
   const res = await axios.get(url);
   if (res.data.token !== access_token) {
     handleToken(res.data.tokenData);
   }
   const blingRes = JSON.parse(res.data.blingResponse);
-  console.log(blingRes.data.retorno.produtos)
+  console.log(blingRes.data.retorno.produtos);
   const products = blingRes.data.retorno.produtos.map(({ produto }) => ({
     _id: produto.codigo,
-    image: produto.imageThumbnail,
+    image: produto.imagem[0].link,
     title: produto.descricao,
     price: Number(produto.preco),
     description: produto.descricaoCurta,
@@ -145,4 +145,101 @@ export const getString = (block) => {
     result += text;
   }
   return result;
+};
+
+export const getImages = (images) => {
+  let result = "";
+  for (let index = 0; index < images.length; index++) {
+    const image = images[index];
+    result += `
+      <imagens>
+        <url>${image.url}</url>
+      </imagens>
+      `;
+  }
+  return result;
+};
+
+export const getDeposito = (depositos) => {
+  let result = "";
+  for (let index = 0; index < depositos.length; index++) {
+    const {deposito} = depositos[index];
+    result += `
+     <deposito>
+        <id>${deposito.id}</id>
+        <estoque>${deposito.saldo}</estoque>
+     </deposito>
+      `;
+  }
+  return result;
+};
+
+export const jsonToXml = (produto) => {
+  return `
+    <?xml version="1.0" encoding="UTF-8"?>
+    <produto>
+       <codigo>${produto.codigo}</codigo>
+       <descricao>${produto.descricao}</descricao>
+       <situacao>${produto.situacao}</situacao>
+       <descricaoComplemen
+  <descricaoComplementar>${
+    produto.descricaoComplementar
+  }</descricaoComplementar>
+  <descricaoCurta>${produto.descricaoCurta}<descricaoCurta/>
+       <un>${produto.unidade}</un>
+       <vlr_unit>${produto.preco}</vlr_unit>
+       <preco_custo>${produto.precoCusto}</preco_custo>
+       <peso_bruto>${produto.pesoBruto}</peso_bruto>
+       <peso_liq>${produto.pesoLiq}</peso_liq>
+       <class_fiscal>${produto.class_fiscal}</class_fiscal>
+       <marca>${produto.marca}</marca>
+       <origem>${produto.origem}</origem>
+       <estoque>${produto.estoqueAtual}</estoque>
+       <gtin>${produto.gtin}</gtin>
+       <localizacao>${produto.localizacao}<localizacao/>
+     <gtinEmbalagem>${produto.gtinEmbalagem}</gtinEmbalagem>
+     <largura>${produto.larguraProduto}</largura>
+     <altura>${produto.alturaProduto}</altura>
+     <profundidade>${produto.profundidadeProduto}</profundidade>
+     <estoqueMinimo>${produto.estoqueMinimo}</estoqueMinimo>
+     <estoqueMaximo>${produto.estoqueMaximo}</estoqueMaximo>
+     <cest>${produto.cest}</cest>
+     <idGrupoProduto>${produto.idGrupoProduto}</idGrupoProduto>
+     <condicao>${produto.condicao}</condicao>
+     <freteGratis>${produto.freteGratis}</freteGratis>
+     <linkExterno>${produto.linkExterno}</linkExterno>
+     <observacoes>${produto.observacoes}</observacoes>
+     <producao>${produto.producao}</producao>
+     <dataValidade>${produto.dataValidade}</dataValidade>
+     <descricaoFornecedor>${produto.descricaoFornecedor}</descricaoFornecedor>
+     <nomeFornecedor>${produto.nomeFornecedor}</nomeFornecedor>
+     <idFabricante>${produto.idFabricante}</idFabricante>
+     <codigoFabricante>${produto.codigoFabricante}</codigoFabricante>
+      <unidadeMedida>${produto.unidadeMedida}</unidadeMedida>
+     <crossdocking>${produto.crossdocking}</crossdocking>
+     <garantia>${produto.garantia}</garantia>
+     <itensPorCaixa>${produto.itensPorCaixa}</itensPorCaixa>
+     <volumes>${produto.volumes}</volumes>
+     <urlVideo>${produto.urlVideo}</urlVideo>
+     ${getDeposito(produto.depositos)}
+     ${getImages(produto.imagens)}
+     <idCategoria>${produto.categoria.id}</idCategoria>
+   <spedTipoItem>${produto.spedTipoItem}<spedTipoItem/>
+    <tipo>${produto.tipo}<tipo/>
+   </produto>
+  `;
+};
+
+export const updateBling = async (products, tokenData, handleToken) => {
+  const produtos = await getBlingProducts(tokenData, handleToken);
+  for (let index = 0; index < products.length; index++) {
+    const [id, quantity] = products[index].split("_");
+    const produto = produtos.find((p) => p.codigo === id);
+    produto.estoqueAtual -= Number(quantity);
+    const xmlBody = jsonToXml(produto)
+    const url = `https://easyfert.onrender.com/bling/${id}`
+    const body = {xmlBody,token:tokenData.access_token}
+    const response = await axios.post(url, body)
+    console.log(response)
+  }
 };

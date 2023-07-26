@@ -6,7 +6,12 @@ import Header from "../components/Header";
 import Lowfooter from "../components/Lowfooter";
 import Footer from "../components/Footer";
 import ProductDetailsContainer from "../components/styles/ProductDetails.styles";
-import { formatCurrency, handlePac, handleSedex } from "../functions";
+import {
+  formatCurrency,
+  getBlingProducts,
+  handlePac,
+  handleSedex,
+} from "../functions";
 import axios from "axios";
 import redheart from "../assets/redheart.png";
 import heart from "../assets/solidheart.png";
@@ -24,6 +29,8 @@ function ProductDetails() {
     wishlist,
     handleWish,
     handleUnWish,
+    tokenData,
+    handleToken,
   } = useContext(CartContext);
   const [price, setPrice] = useState("");
   const [cep, setCep] = useState("");
@@ -47,8 +54,14 @@ function ProductDetails() {
   };
 
   useEffect(() => {
-    getById(id).then((product) => setProduct(product));
-  }, []);
+    // getById(id).then((product) => setProduct(product));
+
+    if (!tokenData.expires_in) return;
+    getBlingProducts(tokenData, handleToken).then((res) => {
+      const productData = res.products.find(({ _id }) => _id === id);
+      setProduct(productData);
+    });
+  }, [tokenData]);
 
   const setPrevImg = () => {
     setImgIndex((prevIndex) => {
@@ -105,7 +118,7 @@ function ProductDetails() {
               <button className="arrows" onClick={setPrevImg}>
                 {"<"}
               </button>
-              <img src={urlFor(product.image[imgIndex])}></img>
+              <img src={product.image}></img>
               <button className="arrows" onClick={setNextImg}>
                 {">"}
               </button>
@@ -129,7 +142,7 @@ function ProductDetails() {
               <h2>{product.title}</h2>
               <img
                 className="imagemobile"
-                src={urlFor(product.image[imgIndex])}
+                src={product.image}
               ></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <p className="description">{product.description}</p>
@@ -144,10 +157,8 @@ function ProductDetails() {
                 </div>
               )}
 
-              <div  className="wpbutton">
-                <a href="https://wa.me/554196078718">
-                  Comprar pelo Whatsapp
-                </a>
+              <div className="wpbutton">
+                <a href="https://wa.me/554196078718">Comprar pelo Whatsapp</a>
               </div>
 
               <div className="shippingcontainer">
@@ -191,9 +202,9 @@ function ProductDetails() {
     </>
   );
 }
-const getById = async (id) => {
-  const product = await client.getDocument(id);
-  return product;
-};
+// const getById = async (id) => {
+//   const product = await client.getDocument(id);
+//   return product;
+// };
 
 export default ProductDetails;
