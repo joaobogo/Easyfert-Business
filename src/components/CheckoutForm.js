@@ -14,7 +14,7 @@ import sedex from "../assets/sedex.png";
 import pac from "../assets/pac.png";
 import { useNavigate } from "react-router-dom";
 import api from "../functions/api";
-import { handlePac, handleSedex } from "../functions/index";
+import { handlePac, handleSedex, updateBling } from "../functions/index";
 
 function CheckoutForm() {
   const [name, setName] = useState("");
@@ -31,6 +31,8 @@ function CheckoutForm() {
     orderId,
     setOrderId,
     customerData,
+    handleToken,
+    tokenData,
   } = useContext(CartContext);
   const [lastName, setLastName] = useState("");
   const [cep, setCEP] = useState(globalCep);
@@ -78,8 +80,7 @@ function CheckoutForm() {
         window.location.href = paymenturl;
       }
     });
-updateBling(order.products)
-
+    updateBling(order.products, tokenData, handleToken);
   };
 
   const postPayment = (body) => {
