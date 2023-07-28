@@ -69,7 +69,7 @@ function Cartitem({ item }) {
     <>
       {data ? (
         <CartItemsContainer>
-          <img src={urlFor(data.image[0])}></img>
+          <img src={data.image[0]}></img>
           <p>{data.title}</p>
           <p>{formatCurrency(data.price * quantity)}</p>
 
