@@ -1,18 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { client } from "../client";
-import { urlFor } from "../client";
 import CartContext from "../context/Cartcontext";
-import { formatCurrency, saveToCart } from "../functions";
+import { formatCurrency, saveToCart, getBlingProducts } from "../functions";
 import CartItemsContainer from "./styles/CartItems.styles";
 
 function Cartitem({ item }) {
   const [data, setData] = useState(null);
-  const { setCart, setTotalprice, totalprice, cart } = useContext(CartContext);
+  const { setCart, setTotalprice, totalprice, cart, tokenData, handleToken } =
+    useContext(CartContext);
   const [quantity, setQuantity] = useState(item.quantity);
 
   useEffect(() => {
-    getById(item._id).then((product) => setData(product));
-  }, []);
+    if (!tokenData.expires_in) return;
+    getBlingProducts(tokenData, handleToken).then((res) => {
+      const productData = res.products.find(({ _id }) => _id === item._id);
+      setData(productData);
+    });
+  }, [tokenData]);
 
   const decrease = () => {
     setQuantity((prevquantity) => {
@@ -36,14 +39,14 @@ function Cartitem({ item }) {
 
   const increase = () => {
     setQuantity((prevquantity) => {
-      const newquantity = Number(prevquantity) + 1
+      const newquantity = Number(prevquantity) + 1;
       const updatedProducts = cart.map((element) => {
         if (element.id != item.id) {
           return element;
         } else {
           return {
             id: item.id,
-            quantity: newquantity ,
+            quantity: newquantity,
             price: item.price,
             _id: item._id,
           };
@@ -91,8 +94,4 @@ function Cartitem({ item }) {
   );
 }
 
-const getById = async (id) => {
-  const product = await client.getDocument(id);
-  return product;
-};
 export default Cartitem;
