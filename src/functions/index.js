@@ -88,7 +88,7 @@ export const getBlingToken = async () => {
   return res.data.token;
 };
 
-export const getBlingProducts = async (tokenData, handleToken) => {
+export const getProdutos = async (tokenData, handleToken) => {
   const { access_token, refresh_token, expires_in } = tokenData;
   const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
   let url = `${BaseUrl}&refresh_token=${refresh_token}`;
@@ -100,8 +100,15 @@ export const getBlingProducts = async (tokenData, handleToken) => {
     handleToken(res.data.tokenData);
   }
   const blingRes = JSON.parse(res.data.blingResponse);
-  console.log(blingRes.data.retorno.produtos);
-  const products = blingRes.data.retorno.produtos.map(({ produto }) => ({
+  return blingRes.data.retorno.produtos;
+}
+
+
+
+
+export const getBlingProducts = async (tokenData, handleToken) => {
+  const produtos = await getProdutos(tokenData, handleToken)
+  const products = produtos.map(({ produto }) => ({
     _id: produto.codigo,
     image: produto.imagem[0].link,
     title: produto.descricao,
@@ -231,10 +238,10 @@ export const jsonToXml = (produto) => {
 };
 
 export const updateBling = async (products, tokenData, handleToken) => {
-  const produtos = await getBlingProducts(tokenData, handleToken);
+  const produtos = await getProdutos(tokenData, handleToken);
   for (let index = 0; index < products.length; index++) {
     const [id, quantity] = products[index].split("_");
-    const produto = produtos.find((p) => p.codigo === id);
+    const produto = produtos.find((p) => p.produto.codigo === id);
     produto.estoqueAtual -= Number(quantity);
     const xmlBody = jsonToXml(produto)
     const url = `https://easyfert.onrender.com/bling/${id}`
