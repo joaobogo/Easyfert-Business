@@ -108,6 +108,7 @@ export const getProdutos = async (tokenData, handleToken) => {
 
 export const getBlingProducts = async (tokenData, handleToken) => {
   const produtos = await getProdutos(tokenData, handleToken)
+  console.log(produtos)
   const products = produtos.map(({ produto }) => ({
     _id: produto.codigo,
     image: produto.imagem[0].link,
@@ -155,6 +156,9 @@ export const getString = (block) => {
 };
 
 export const getImages = (images) => {
+  if(!images){
+    return "";
+  }
   let result = "";
   for (let index = 0; index < images.length; index++) {
     const image = images[index];
@@ -168,6 +172,9 @@ export const getImages = (images) => {
 };
 
 export const getDeposito = (depositos) => {
+  if(!depositos){
+    return "";
+  }
   let result = "";
   for (let index = 0; index < depositos.length; index++) {
     const {deposito} = depositos[index];
