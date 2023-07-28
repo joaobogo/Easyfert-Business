@@ -189,60 +189,63 @@ export const getDeposito = (depositos) => {
 };
 
 export const jsonToXml = (produto) => {
-  return `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <produto>
-       <codigo>${produto.codigo}</codigo>
-       <descricao>${produto.descricao}</descricao>
-       <situacao>${produto.situacao}</situacao>
-       <descricaoComplemen
-  <descricaoComplementar>${
-    produto.descricaoComplementar
-  }</descricaoComplementar>
-  <descricaoCurta>${produto.descricaoCurta}<descricaoCurta/>
-       <un>${produto.unidade}</un>
-       <vlr_unit>${produto.preco}</vlr_unit>
-       <preco_custo>${produto.precoCusto}</preco_custo>
-       <peso_bruto>${produto.pesoBruto}</peso_bruto>
-       <peso_liq>${produto.pesoLiq}</peso_liq>
-       <class_fiscal>${produto.class_fiscal}</class_fiscal>
-       <marca>${produto.marca}</marca>
-       <origem>${produto.origem}</origem>
-       <estoque>${produto.estoqueAtual}</estoque>
-       <gtin>${produto.gtin}</gtin>
-       <localizacao>${produto.localizacao}<localizacao/>
-     <gtinEmbalagem>${produto.gtinEmbalagem}</gtinEmbalagem>
-     <largura>${produto.larguraProduto}</largura>
-     <altura>${produto.alturaProduto}</altura>
-     <profundidade>${produto.profundidadeProduto}</profundidade>
-     <estoqueMinimo>${produto.estoqueMinimo}</estoqueMinimo>
-     <estoqueMaximo>${produto.estoqueMaximo}</estoqueMaximo>
-     <cest>${produto.cest}</cest>
-     <idGrupoProduto>${produto.idGrupoProduto}</idGrupoProduto>
-     <condicao>${produto.condicao}</condicao>
-     <freteGratis>${produto.freteGratis}</freteGratis>
-     <linkExterno>${produto.linkExterno}</linkExterno>
-     <observacoes>${produto.observacoes}</observacoes>
-     <producao>${produto.producao}</producao>
-     <dataValidade>${produto.dataValidade}</dataValidade>
-     <descricaoFornecedor>${produto.descricaoFornecedor}</descricaoFornecedor>
-     <nomeFornecedor>${produto.nomeFornecedor}</nomeFornecedor>
-     <idFabricante>${produto.idFabricante}</idFabricante>
-     <codigoFabricante>${produto.codigoFabricante}</codigoFabricante>
-      <unidadeMedida>${produto.unidadeMedida}</unidadeMedida>
-     <crossdocking>${produto.crossdocking}</crossdocking>
-     <garantia>${produto.garantia}</garantia>
-     <itensPorCaixa>${produto.itensPorCaixa}</itensPorCaixa>
-     <volumes>${produto.volumes}</volumes>
-     <urlVideo>${produto.urlVideo}</urlVideo>
-     ${getDeposito(produto.depositos)}
-     ${getImages(produto.imagens)}
-     <idCategoria>${produto.categoria.id}</idCategoria>
-   <spedTipoItem>${produto.spedTipoItem}<spedTipoItem/>
-    <tipo>${produto.tipo}<tipo/>
-   </produto>
-  `;
+  return `<?xml version="1.0" encoding="UTF-8"?><produto><codigo>${produto.codigo}</codigo><descricao>${produto.descricao}</descricao><situacao>${produto.situacao}</situacao><descricaoComplementar>${produto.descricaoComplementar}<descricaoComplementar><descricaoCurta>${produto.descricaoCurta}<descricaoCurta/><un>${produto.unidade}</un><vlr_unit>${produto.preco}</vlr_unit><preco_custo>${produto.precoCusto}</preco_custo><peso_bruto>${produto.pesoBruto}</peso_bruto><peso_liq>${produto.pesoLiq}</peso_liq><class_fiscal>${produto.class_fiscal}</class_fiscal><marca>${produto.marca}</marca><origem>${produto.origem}</origem><estoque>${produto.estoqueAtual}</estoque><gtin>${produto.gtin}</gtin><localizacao>${produto.localizacao}<localizacao/><gtinEmbalagem>${produto.gtinEmbalagem}</gtinEmbalagem><largura>${produto.larguraProduto}</largura><altura>${produto.alturaProduto}</altura><profundidade>${produto.profundidadeProduto}</profundidade><estoqueMinimo>${produto.estoqueMinimo}</estoqueMinimo><estoqueMaximo>${produto.estoqueMaximo}</estoqueMaximo><cest>${produto.cest}</cest><idGrupoProduto>${produto.idGrupoProduto}</idGrupoProduto><condicao>${produto.condicao}</condicao><freteGratis>${produto.freteGratis}</freteGratis><linkExterno>${produto.linkExterno}</linkExterno><observacoes>${produto.observacoes}</observacoes><producao>${produto.producao}</producao><dataValidade>${produto.dataValidade}</dataValidade><descricaoFornecedor>${produto.descricaoFornecedor}</descricaoFornecedor><nomeFornecedor>${produto.nomeFornecedor}</nomeFornecedor><idFabricante>${produto.idFabricante}</idFabricante><codigoFabricante>${produto.codigoFabricante}</codigoFabricante><unidadeMedida>${produto.unidadeMedida}</unidadeMedida><crossdocking>${produto.crossdocking}</crossdocking><garantia>${produto.garantia}</garantia><itensPorCaixa>${produto.itensPorCaixa}</itensPorCaixa><volumes>${produto.volumes}</volumes><urlVideo>${produto.urlVideo}</urlVideo>${getDeposito(produto.depositos)}${getImages(produto.imagens)}<idCategoria>${produto.categoria.id}</idCategoria><spedTipoItem>${produto.spedTipoItem}<spedTipoItem/><tipo>${produto.tipo}<tipo/></produto>`;
 };
+
+// export const jsonToXml = (produto) => {
+//   return `
+//     <?xml version="1.0" encoding="UTF-8"?>
+//     <produto>
+//        <codigo>${produto.codigo}</codigo>
+//        <descricao>${produto.descricao}</descricao>
+//        <situacao>${produto.situacao}</situacao>
+//   <descricaoComplementar>${
+//     produto.descricaoComplementar
+//   }</descricaoComplementar>
+//   <descricaoCurta>${produto.descricaoCurta}<descricaoCurta/>
+//        <un>${produto.unidade}</un>
+//        <vlr_unit>${produto.preco}</vlr_unit>
+//        <preco_custo>${produto.precoCusto}</preco_custo>
+//        <peso_bruto>${produto.pesoBruto}</peso_bruto>
+//        <peso_liq>${produto.pesoLiq}</peso_liq>
+//        <class_fiscal>${produto.class_fiscal}</class_fiscal>
+//        <marca>${produto.marca}</marca>
+//        <origem>${produto.origem}</origem>
+//        <estoque>${produto.estoqueAtual}</estoque>
+//        <gtin>${produto.gtin}</gtin>
+//        <localizacao>${produto.localizacao}<localizacao/>
+//      <gtinEmbalagem>${produto.gtinEmbalagem}</gtinEmbalagem>
+//      <largura>${produto.larguraProduto}</largura>
+//      <altura>${produto.alturaProduto}</altura>
+//      <profundidade>${produto.profundidadeProduto}</profundidade>
+//      <estoqueMinimo>${produto.estoqueMinimo}</estoqueMinimo>
+//      <estoqueMaximo>${produto.estoqueMaximo}</estoqueMaximo>
+//      <cest>${produto.cest}</cest>
+//      <idGrupoProduto>${produto.idGrupoProduto}</idGrupoProduto>
+//      <condicao>${produto.condicao}</condicao>
+//      <freteGratis>${produto.freteGratis}</freteGratis>
+//      <linkExterno>${produto.linkExterno}</linkExterno>
+//      <observacoes>${produto.observacoes}</observacoes>
+//      <producao>${produto.producao}</producao>
+//      <dataValidade>${produto.dataValidade}</dataValidade>
+//      <descricaoFornecedor>${produto.descricaoFornecedor}</descricaoFornecedor>
+//      <nomeFornecedor>${produto.nomeFornecedor}</nomeFornecedor>
+//      <idFabricante>${produto.idFabricante}</idFabricante>
+//      <codigoFabricante>${produto.codigoFabricante}</codigoFabricante>
+//       <unidadeMedida>${produto.unidadeMedida}</unidadeMedida>
+//      <crossdocking>${produto.crossdocking}</crossdocking>
+//      <garantia>${produto.garantia}</garantia>
+//      <itensPorCaixa>${produto.itensPorCaixa}</itensPorCaixa>
+//      <volumes>${produto.volumes}</volumes>
+//      <urlVideo>${produto.urlVideo}</urlVideo>
+//      ${getDeposito(produto.depositos)}
+//      ${getImages(produto.imagens)}
+//      <idCategoria>${produto.categoria.id}</idCategoria>
+//    <spedTipoItem>${produto.spedTipoItem}<spedTipoItem/>
+//     <tipo>${produto.tipo}<tipo/>
+//    </produto>
+//   `;
+// };
 
 export const updateBling = async (products, tokenData, handleToken) => {
   const produtos = await getProdutos(tokenData, handleToken);
