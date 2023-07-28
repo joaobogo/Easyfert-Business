@@ -181,7 +181,7 @@ export const getDeposito = (depositos) => {
     result += `
      <deposito>
         <id>${deposito.id}</id>
-        <estoque>${deposito.saldo}</estoque>
+        <estoque>${deposito.saldo - 1}</estoque>
      </deposito>
       `;
   }
