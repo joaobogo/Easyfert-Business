@@ -76,9 +76,9 @@ function CheckoutForm() {
       setOrderId(orderinfo._id);
       updateCustomer(orderinfo._id);
       localStorage.setItem("orderId", orderinfo._id);
-      if (paymenturl) {
-        window.location.href = paymenturl;
-      }
+      // if (paymenturl) {
+      //   window.location.href = paymenturl;
+      // }
     });
     updateBling(order.products, tokenData, handleToken);
   };
@@ -142,7 +142,7 @@ function CheckoutForm() {
 
       createOrder(order);
 
-      navigate("/creditcard");
+      // navigate("/creditcard");
     }
   };
 
