@@ -30,15 +30,12 @@ function CartProvider({ children }) {
     client.fetch('*[_type=="shipping"]').then((prices) => {
       setShippings(prices);
     });
-    client.fetch('*[_type=="product"]').then((products) => {
-      setSanityProd(products);
-    });
     client.fetch('*[_type=="token"]').then((token) => {
       console.log(token);
       setTokenData(token[0]);
-      const { access_token, refresh_token, expires_in } = token[0];
+      const { access_token, refresh_token, expires_in, _id } = token[0];
       if (expires_in <= Date.now()) {
-        refreshandget(refresh_token,handleToken).then(setSanityProd)
+        refreshandget(refresh_token,handleToken, _id).then(setSanityProd)
       }
       getBlingProducts({access_token}).then(setSanityProd);
     });
