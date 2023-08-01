@@ -88,27 +88,28 @@ export const getBlingToken = async () => {
   return res.data.token;
 };
 
-export const getProdutos = async (tokenData, handleToken) => {
-  const { access_token, refresh_token, expires_in } = tokenData;
+export const getProdutos = async (tokenData) => {
+  const { access_token } = tokenData;
   const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
-  let url = `${BaseUrl}&refresh_token=${refresh_token}`;
-  // if (expires_in > Date.now()) {
-  url = `${BaseUrl}&access_token=${access_token}`;
-  // }
+  const url = `${BaseUrl}&access_token=${access_token}`;
   const res = await axios.get(url);
-  if (res.data.token !== access_token) {
-    handleToken(res.data.tokenData);
-  }
   const blingRes = JSON.parse(res.data.blingResponse);
   return blingRes.data.retorno.produtos;
-}
+};
 
+export const refreshandget = async (refresh_token, setToken) => {
+  const BaseUrl = "https://easyfert.onrender.com/bling/refresh";
+  const url = `${BaseUrl}?refresh_token=${refresh_token}`;
+  const { data } = axios.get(url);
+  console.log("refresh", data)
+  setToken(data);
+  const res = await getBlingProducts(data);
+  return res;
+};
 
-
-
-export const getBlingProducts = async (tokenData, handleToken) => {
-  const produtos = await getProdutos(tokenData, handleToken)
-  console.log(produtos)
+export const getBlingProducts = async (tokenData) => {
+  const produtos = await getProdutos(tokenData);
+  console.log(produtos);
   const products = produtos.map(({ produto }) => ({
     _id: produto.codigo,
     image: produto.imagem[0].link,
@@ -156,7 +157,7 @@ export const getString = (block) => {
 };
 
 export const getImages = (images) => {
-  if(!images){
+  if (!images) {
     return "";
   }
   let result = "";
@@ -172,12 +173,12 @@ export const getImages = (images) => {
 };
 
 export const getDeposito = (depositos) => {
-  if(!depositos){
+  if (!depositos) {
     return "";
   }
   let result = "";
   for (let index = 0; index < depositos.length; index++) {
-    const {deposito} = depositos[index];
+    const { deposito } = depositos[index];
     result += `
      <deposito>
         <id>${deposito.id}</id>
@@ -189,7 +190,65 @@ export const getDeposito = (depositos) => {
 };
 
 export const jsonToXml = (produto) => {
-  return `<?xml version="1.0" encoding="UTF-8"?><produto><codigo>${produto.codigo}</codigo><descricao>${produto.descricao}</descricao><situacao>${produto.situacao}</situacao><descricaoComplementar>${produto.descricaoComplementar}<descricaoComplementar><descricaoCurta>${produto.descricaoCurta}<descricaoCurta/><un>${produto.unidade}</un><vlr_unit>${produto.preco}</vlr_unit><preco_custo>${produto.precoCusto}</preco_custo><peso_bruto>${produto.pesoBruto}</peso_bruto><peso_liq>${produto.pesoLiq}</peso_liq><class_fiscal>${produto.class_fiscal}</class_fiscal><marca>${produto.marca}</marca><origem>${produto.origem}</origem><estoque>${produto.estoqueAtual}</estoque><gtin>${produto.gtin}</gtin><localizacao>${produto.localizacao}<localizacao/><gtinEmbalagem>${produto.gtinEmbalagem}</gtinEmbalagem><largura>${produto.larguraProduto}</largura><altura>${produto.alturaProduto}</altura><profundidade>${produto.profundidadeProduto}</profundidade><estoqueMinimo>${produto.estoqueMinimo}</estoqueMinimo><estoqueMaximo>${produto.estoqueMaximo}</estoqueMaximo><cest>${produto.cest}</cest><idGrupoProduto>${produto.idGrupoProduto}</idGrupoProduto><condicao>${produto.condicao}</condicao><freteGratis>${produto.freteGratis}</freteGratis><linkExterno>${produto.linkExterno}</linkExterno><observacoes>${produto.observacoes}</observacoes><producao>${produto.producao}</producao><dataValidade>${produto.dataValidade}</dataValidade><descricaoFornecedor>${produto.descricaoFornecedor}</descricaoFornecedor><nomeFornecedor>${produto.nomeFornecedor}</nomeFornecedor><idFabricante>${produto.idFabricante}</idFabricante><codigoFabricante>${produto.codigoFabricante}</codigoFabricante><unidadeMedida>${produto.unidadeMedida}</unidadeMedida><crossdocking>${produto.crossdocking}</crossdocking><garantia>${produto.garantia}</garantia><itensPorCaixa>${produto.itensPorCaixa}</itensPorCaixa><volumes>${produto.volumes}</volumes><urlVideo>${produto.urlVideo}</urlVideo>${getDeposito(produto.depositos)}${getImages(produto.imagens)}<idCategoria>${produto.categoria.id}</idCategoria><spedTipoItem>${produto.spedTipoItem}<spedTipoItem/><tipo>${produto.tipo}<tipo/></produto>`;
+  return `<?xml version="1.0" encoding="UTF-8"?><produto><codigo>${
+    produto.codigo
+  }</codigo><descricao>${produto.descricao}</descricao><situacao>${
+    produto.situacao
+  }</situacao><descricaoComplementar>${
+    produto.descricaoComplementar
+  }<descricaoComplementar><descricaoCurta>${
+    produto.descricaoCurta
+  }<descricaoCurta/><un>${produto.unidade}</un><vlr_unit>${
+    produto.preco
+  }</vlr_unit><preco_custo>${produto.precoCusto}</preco_custo><peso_bruto>${
+    produto.pesoBruto
+  }</peso_bruto><peso_liq>${produto.pesoLiq}</peso_liq><class_fiscal>${
+    produto.class_fiscal
+  }</class_fiscal><marca>${produto.marca}</marca><origem>${
+    produto.origem
+  }</origem><estoque>${produto.estoqueAtual}</estoque><gtin>${
+    produto.gtin
+  }</gtin><localizacao>${produto.localizacao}<localizacao/><gtinEmbalagem>${
+    produto.gtinEmbalagem
+  }</gtinEmbalagem><largura>${produto.larguraProduto}</largura><altura>${
+    produto.alturaProduto
+  }</altura><profundidade>${
+    produto.profundidadeProduto
+  }</profundidade><estoqueMinimo>${
+    produto.estoqueMinimo
+  }</estoqueMinimo><estoqueMaximo>${
+    produto.estoqueMaximo
+  }</estoqueMaximo><cest>${produto.cest}</cest><idGrupoProduto>${
+    produto.idGrupoProduto
+  }</idGrupoProduto><condicao>${produto.condicao}</condicao><freteGratis>${
+    produto.freteGratis
+  }</freteGratis><linkExterno>${
+    produto.linkExterno
+  }</linkExterno><observacoes>${produto.observacoes}</observacoes><producao>${
+    produto.producao
+  }</producao><dataValidade>${
+    produto.dataValidade
+  }</dataValidade><descricaoFornecedor>${
+    produto.descricaoFornecedor
+  }</descricaoFornecedor><nomeFornecedor>${
+    produto.nomeFornecedor
+  }</nomeFornecedor><idFabricante>${
+    produto.idFabricante
+  }</idFabricante><codigoFabricante>${
+    produto.codigoFabricante
+  }</codigoFabricante><unidadeMedida>${
+    produto.unidadeMedida
+  }</unidadeMedida><crossdocking>${
+    produto.crossdocking
+  }</crossdocking><garantia>${produto.garantia}</garantia><itensPorCaixa>${
+    produto.itensPorCaixa
+  }</itensPorCaixa><volumes>${produto.volumes}</volumes><urlVideo>${
+    produto.urlVideo
+  }</urlVideo>${getDeposito(produto.depositos)}${getImages(
+    produto.imagens
+  )}<idCategoria>${produto.categoria.id}</idCategoria><spedTipoItem>${
+    produto.spedTipoItem
+  }<spedTipoItem/><tipo>${produto.tipo}<tipo/></produto>`;
 };
 
 // export const jsonToXml = (produto) => {
@@ -251,12 +310,12 @@ export const updateBling = async (products, tokenData, handleToken) => {
   const produtos = await getProdutos(tokenData, handleToken);
   for (let index = 0; index < products.length; index++) {
     const [id, quantity] = products[index].split("_");
-    const {produto} = produtos.find((p) => p.produto.codigo === id);
+    const { produto } = produtos.find((p) => p.produto.codigo === id);
     produto.estoqueAtual -= Number(quantity);
-    const xmlBody = jsonToXml(produto)
-    const url = `https://easyfert.onrender.com/bling/${id}`
-    const body = {xmlBody,token:tokenData.access_token}
-    const response = await axios.post(url, body)
-    console.log(response)
+    const xmlBody = jsonToXml(produto);
+    const url = `https://easyfert.onrender.com/bling/${id}`;
+    const body = { xmlBody, token: tokenData.access_token };
+    const response = await axios.post(url, body);
+    console.log(response);
   }
 };

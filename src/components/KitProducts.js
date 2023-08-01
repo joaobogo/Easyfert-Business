@@ -7,25 +7,17 @@ import { getBlingProducts } from "../functions";
 import CartContext from "../context/Cartcontext";
 
 function KitProducts() {
-  const { tokenData, handleToken } = useContext(CartContext);
-  const [kits, setKits] = useState([]);
+  const { sanityprod } = useContext(CartContext);
 
-  useEffect(() => {
-    // getServerSideProps().then((res) => {
-    //   setKits(res.kits);
-    // });
-    if(!tokenData.expires_in) return;
-    getBlingProducts(tokenData,handleToken).then((res)=>{
-      setKits(res.kits);
-    })
-  }, [tokenData]);
+
+
 
     
   return (
     <ProductContainer>
       <h1  id='kits' name='kits' className="kittitle">Kits</h1>
       <MapContainer>
-        {kits.map((kit) => ( 
+        {sanityprod.kits.map((kit) => ( 
           <ProductCard key={kit._id} product={kit} />
         ))}
       </MapContainer>

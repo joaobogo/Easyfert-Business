@@ -31,6 +31,7 @@ function ProductDetails() {
     handleUnWish,
     tokenData,
     handleToken,
+    sanityprod,
   } = useContext(CartContext);
   const [price, setPrice] = useState("");
   const [cep, setCep] = useState("");
@@ -54,14 +55,18 @@ function ProductDetails() {
   };
 
   useEffect(() => {
-    // getById(id).then((product) => setProduct(product));
 
-    if (!tokenData.expires_in) return;
-    getBlingProducts(tokenData, handleToken).then((res) => {
-      const productData = res.products.find(({ _id }) => _id === id);
+    if (!sanityprod.products.length) return;
+
+    const productData = sanityprod.products.find(({ _id }) => _id === id);
+
+    if (productData) {
       setProduct(productData);
-    });
-  }, [tokenData]);
+    } else {
+      const kit = sanityprod.kits.find(({ _id }) => _id === id);
+      setProduct(kit);
+    }
+  }, [sanityprod]);
 
   const setPrevImg = () => {
     setImgIndex((prevIndex) => {
@@ -140,10 +145,7 @@ function ProductDetails() {
               )}
 
               <h2>{product.title}</h2>
-              <img
-                className="imagemobile"
-                src={product.image}
-              ></img>
+              <img className="imagemobile" src={product.image}></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <p className="description">{product.description}</p>
 

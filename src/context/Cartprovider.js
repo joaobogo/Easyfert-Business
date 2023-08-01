@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getsum } from "../functions";
+import { getsum, refreshandget } from "../functions";
 import Cartcontext from "./Cartcontext";
 import { client } from "../client";
 import { getBlingProducts } from "../functions";
-
-
 
 const savedCart = localStorage.getItem("newcart");
 console.log(savedCart);
@@ -24,7 +22,7 @@ function CartProvider({ children }) {
   const [customerData, setCustomerData] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(!!customerKey);
   const [customerId, setCustomerId] = useState(customerKey);
-  const [sanityprod, setSanityProd] = useState([]);
+  const [sanityprod, setSanityProd] = useState({kits:[],products:[]});
   const [wishlist, setWishList] = useState(initialWishList);
   const [tokenData, setTokenData] = useState({});
 
@@ -38,7 +36,11 @@ function CartProvider({ children }) {
     client.fetch('*[_type=="token"]').then((token) => {
       console.log(token);
       setTokenData(token[0]);
-      getBlingProducts(token[0],handleToken).then(console.log)
+      const { access_token, refresh_token, expires_in } = token[0];
+      if (expires_in <= Date.now()) {
+        refreshandget(refresh_token,handleToken).then(setSanityProd)
+      }
+      getBlingProducts({access_token}).then(setSanityProd);
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
@@ -78,6 +80,17 @@ function CartProvider({ children }) {
       return newWishList;
     });
   };
+
+  useEffect(() => {
+    // getServerSideProps().then((res) => {
+    //   setProducts(res.products);
+    // });
+    if (!tokenData.expires_in) return;
+    getBlingProducts(tokenData, handleToken).then((res) => {
+      console.log(res);
+      setProducts(res.products);
+    });
+  }, [tokenData]);
 
   const globalState = {
     cart,
