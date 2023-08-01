@@ -102,7 +102,8 @@ export const refreshandget = async (refresh_token, setToken, _id) => {
   const url = `${BaseUrl}?refresh_token=${refresh_token}`;
   const { data } = axios.get(url);
   console.log("refresh", data)
-  setToken({...data,_id});
+  const expires_in = Date.now()+(data.expires_in*1000)
+  setToken({...data,_id, expires_in});
   const res = await getBlingProducts(data);
   return res;
 };
