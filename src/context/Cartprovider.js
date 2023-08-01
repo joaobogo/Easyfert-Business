@@ -81,16 +81,7 @@ function CartProvider({ children }) {
     });
   };
 
-  useEffect(() => {
-    // getServerSideProps().then((res) => {
-    //   setProducts(res.products);
-    // });
-    if (!tokenData.expires_in) return;
-    getBlingProducts(tokenData, handleToken).then((res) => {
-      console.log(res);
-      setProducts(res.products);
-    });
-  }, [tokenData]);
+
 
   const globalState = {
     cart,
