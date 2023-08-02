@@ -44,6 +44,7 @@ function CartProvider({ children }) {
 
   const handleToken = (data) => {
     const { access_token, refresh_token, expires_in } = data;
+    console.log(tokenData,data)
     setTokenData(data);
     client
       .patch(tokenData._id)
