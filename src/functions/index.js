@@ -100,7 +100,7 @@ export const getProdutos = async (tokenData) => {
 export const refreshandget = async (refresh_token, setToken, _id) => {
   const BaseUrl = "https://easyfert.onrender.com/bling/refresh";
   const url = `${BaseUrl}?refresh_token=${refresh_token}`;
-  const { data } = axios.get(url);
+  const { data } = await axios.get(url);
   console.log("refresh", data)
   const expires_in = Date.now()+(data.expires_in*1000)
   setToken({...data,_id, expires_in});
