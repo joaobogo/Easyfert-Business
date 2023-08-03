@@ -139,7 +139,20 @@ function CheckoutForm() {
         payment_type: paymentType,
         id: Date.now(),
       };
-
+      const blingOrder = {
+        cart,
+        address: {
+          address,
+          number,
+          city,
+          extra,
+          state,
+          neighborhood,
+        },
+        contact: {
+          name: `${name} ${lastName}`,
+        },
+      };
       createOrder(order);
 
       // navigate("/creditcard");

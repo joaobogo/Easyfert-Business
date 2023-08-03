@@ -307,7 +307,19 @@ export const jsonToXml = (produto) => {
 //   `;
 // };
 
-export const updateBling = async (products, tokenData, handleToken) => {
+export const postBlingOrder = async (order, token) => {
+  const url = `https://easyfert.onrender.com/bling/sellorder`;
+  const body = {
+    order, 
+    token
+  }
+  const response = await axios.post(url, body);
+  console.log(response);
+}
+
+
+export const updateBling = async (order, tokenData, handleToken) => {
+ 
   const produtos = await getProdutos(tokenData, handleToken);
   for (let index = 0; index < products.length; index++) {
     const [id, quantity] = products[index].split("_");
