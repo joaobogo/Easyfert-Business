@@ -2,19 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import CartContext from "../context/Cartcontext";
 import { client } from "../client";
-import { formatCurrency, translate } from "../functions/index";
+import {
+  formatCurrency,
+  postBlingOrder,
+  translate,
+  handlePac,
+  handleSedex,
+} from "../functions/index";
 import CheckoutContainer from "./styles/CheckoutForm.styles";
 import Header from "./Header";
 import Footer from "./Footer";
 import Lowfooter from "./Lowfooter";
-import { Link } from "react-router-dom";
 import pix from "../assets/pix.png";
 import cc from "../assets/visamaster.png";
 import sedex from "../assets/sedex.png";
 import pac from "../assets/pac.png";
 import { useNavigate } from "react-router-dom";
 import api from "../functions/api";
-import { handlePac, handleSedex, updateBling } from "../functions/index";
+
 
 function CheckoutForm() {
   const [name, setName] = useState("");
@@ -41,6 +46,7 @@ function CheckoutForm() {
   const [address, setAddress] = useState("");
   const [extra, setExtra] = useState("");
   const [number, setNumber] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
   const [mailingtype, setMailingType] = useState("");
   const [paymentid, setPaymentId] = useState("");
@@ -58,6 +64,7 @@ function CheckoutForm() {
           setCity(data.localidade);
           setState(data.uf);
           setAddress(data.logradouro);
+          setNeighborhood(data.bairro)
         });
     }
   }, []);
@@ -80,7 +87,7 @@ function CheckoutForm() {
       //   window.location.href = paymenturl;
       // }
     });
-    updateBling(order.products, tokenData, handleToken);
+    postBlingOrder(order.products, tokenData, handleToken);
   };
 
   const postPayment = (body) => {
@@ -192,6 +199,7 @@ function CheckoutForm() {
           setCity(data.localidade);
           setState(data.uf);
           setAddress(data.logradouro);
+          setNeighborhood(data.bairro)
         });
     }
   };
@@ -275,6 +283,12 @@ function CheckoutForm() {
               placeholder="Complemento"
               value={extra}
               onChange={(e) => setExtra(e.target.value)}
+              type="text"
+            ></input>
+            <input
+              placeholder="Bairro"
+              value={neighborhood}
+              onChange={(e) => setNeighborhood(e.target.value)}
               type="text"
             ></input>
           </div>

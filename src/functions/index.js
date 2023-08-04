@@ -318,17 +318,17 @@ export const postBlingOrder = async (order, token) => {
 }
 
 
-export const updateBling = async (order, tokenData, handleToken) => {
+// export const updateBling = async (order, tokenData, handleToken) => {
  
-  const produtos = await getProdutos(tokenData, handleToken);
-  for (let index = 0; index < products.length; index++) {
-    const [id, quantity] = products[index].split("_");
-    const { produto } = produtos.find((p) => p.produto.codigo === id);
-    produto.estoqueAtual -= Number(quantity);
-    const xmlBody = jsonToXml(produto);
-    const url = `https://easyfert.onrender.com/bling/${id}`;
-    const body = { xmlBody, token: tokenData.access_token };
-    const response = await axios.post(url, body);
-    console.log(response);
-  }
-};
+//   const produtos = await getProdutos(tokenData, handleToken);
+//   for (let index = 0; index < products.length; index++) {
+//     const [id, quantity] = products[index].split("_");
+//     const { produto } = produtos.find((p) => p.produto.codigo === id);
+//     produto.estoqueAtual -= Number(quantity);
+//     const xmlBody = jsonToXml(produto);
+//     const url = `https://easyfert.onrender.com/bling/${id}`;
+//     const body = { xmlBody, token: tokenData.access_token };
+//     const response = await axios.post(url, body);
+//     console.log(response);
+//   }
+// };
