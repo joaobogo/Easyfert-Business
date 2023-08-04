@@ -78,7 +78,7 @@ function CheckoutForm() {
     client.patch(customerData._id).set({ orders: neworders }).commit();
   };
 
-  const createOrder = (order, paymenturl) => {
+  const createOrder = (order, blingOrder, paymenturl) => {
     client.create(order).then((orderinfo) => {
       setOrderId(orderinfo._id);
       updateCustomer(orderinfo._id);
@@ -87,7 +87,7 @@ function CheckoutForm() {
       //   window.location.href = paymenturl;
       // }
     });
-    postBlingOrder(order.products, tokenData, handleToken);
+    postBlingOrder(blingOrder, tokenData);
   };
 
   const postPayment = (body) => {
@@ -111,7 +111,23 @@ function CheckoutForm() {
           payment_type: paymentType,
           id: Date.now(),
         };
-        createOrder(order, paymenturl);
+        const blingOrder = {
+          cart,
+          total_price: totalprice + price,
+          address: {
+            address,
+            number,
+            city,
+            extra,
+            state,
+            neighborhood,
+          },
+          contact: {
+            name: `${name} ${lastName}`,
+          },
+        };
+
+        createOrder(order, blingOrder, paymenturl);
       })
       .catch(console.log);
   };
@@ -148,6 +164,7 @@ function CheckoutForm() {
       };
       const blingOrder = {
         cart,
+        total_price: totalprice + price,
         address: {
           address,
           number,
@@ -160,7 +177,7 @@ function CheckoutForm() {
           name: `${name} ${lastName}`,
         },
       };
-      createOrder(order);
+      createOrder(order, blingOrder);
 
       // navigate("/creditcard");
     }
