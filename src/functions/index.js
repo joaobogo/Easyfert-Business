@@ -95,7 +95,7 @@ export const getProdutos = async (tokenData) => {
   const res = await axios.get(url);
   console.log(res)
   const blingRes = JSON.parse(res.data.blingResponse);
-  return blingRes.data;
+  return blingRes.data.data;
 };
 
 export const refreshandget = async (refresh_token, setToken, _id) => {
