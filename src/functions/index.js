@@ -112,18 +112,18 @@ export const refreshandget = async (refresh_token, setToken, _id) => {
 export const getBlingProducts = async (tokenData) => {
   const produtos = await getProdutos(tokenData);
   console.log(produtos);
-  const products = produtos.map(({ produto }) => ({
-    _id: produto.codigo,
-    image: produto.imagem[0].link,
-    title: produto.descricao,
-    price: Number(produto.preco),
+  const products = produtos.map(( produto ) => ({
+    _id: produto.id,
+    image: produto.imagem.thumbnail,
+    title: produto.nome,
+    price: produto.preco,
     description: produto.descricaoCurta,
-    description2: produto.descricaoComplementar,
-    quantity: produto.estoqueAtual,
+    // description2: produto.descricaoComplementar,
+    // quantity: produto.estoqueAtual,
     tags: [],
     availability: produto.situacao,
-    brand: produto.marca,
-    kit: produto.volumes > 1,
+    // brand: produto.marca,
+    kit: produto.nome.includes(/kit/i),
   }));
 
   return {
