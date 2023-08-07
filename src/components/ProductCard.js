@@ -46,7 +46,7 @@ function ProductCard({ product }) {
       </Link>
 
       
-{product.quantity === 0 ? <span>Fora de Estoque</span> : null}
+{/* {product.quantity === 0 ? <span>Fora de Estoque</span> : null} */}
       {cart.some((item) => item.id === product._id) ? (
         <span> Produto já adicionado ao carrinho</span>
       ) : (
