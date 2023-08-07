@@ -123,7 +123,7 @@ export const getBlingProducts = async (tokenData) => {
     tags: [],
     availability: produto.situacao,
     // brand: produto.marca,
-    kit: produto.nome.includes(/kit/i),
+    kit: produto.nome.includes("Kit"),
   }));
 
   return {
