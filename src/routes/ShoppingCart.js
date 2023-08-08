@@ -23,9 +23,9 @@ const ShoppingCart = () => {
   const [price, setPrice] = useState("");
 
   const decreaseStock = () => {
-    cart.forEach((element) => {
-      client.patch(element._id).dec({ quantity: element.quantity }).commit();
-    });
+    // cart.forEach((element) => {
+    //   client.patch(element._id).dec({ quantity: element.quantity }).commit();
+    // });
     navigate("form");
   };
 
