@@ -55,7 +55,7 @@ function ProductDetails() {
   };
 
   useEffect(() => {
-
+console.log(sanityprod)
     if (!sanityprod.products.length) return;
 
     const productData = sanityprod.products.find(({ _id }) => _id === id);

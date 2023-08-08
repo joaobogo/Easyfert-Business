@@ -172,6 +172,7 @@ function CheckoutForm() {
           extra,
           state,
           neighborhood,
+          cep,
         },
         contact: {
           name: `${name} ${lastName}`,
