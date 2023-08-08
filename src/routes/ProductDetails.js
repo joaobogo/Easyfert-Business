@@ -9,6 +9,7 @@ import ProductDetailsContainer from "../components/styles/ProductDetails.styles"
 import {
   formatCurrency,
   getBlingProducts,
+  getBlingProductsDetails,
   handlePac,
   handleSedex,
 } from "../functions";
@@ -54,20 +55,24 @@ function ProductDetails() {
     });
   };
 
+  // useEffect(() => {
+  //   console.log(sanityprod);
+  //   if (!sanityprod.products.length) return;
+
+  //   const productData = sanityprod.products.find(({ _id }) => _id === id);
+
+  //   if (productData) {
+  //     setProduct(productData);
+  //   } else {
+  //     const kit = sanityprod.kits.find(({ _id }) => _id === id);
+  //     setProduct(kit);
+  //   }
+  // }, [sanityprod]);
+
   useEffect(() => {
-console.log(sanityprod)
-    if (!sanityprod.products.length) return;
-
-    const productData = sanityprod.products.find(({ _id }) => _id === id);
-
-    if (productData) {
-      setProduct(productData);
-    } else {
-      const kit = sanityprod.kits.find(({ _id }) => _id === id);
-      setProduct(kit);
-    }
-  }, [sanityprod]);
-
+    getBlingProductsDetails(tokenData, id).then(setProduct);
+  }, []);
+  
   const setPrevImg = () => {
     setImgIndex((prevIndex) => {
       if (prevIndex === 0) {

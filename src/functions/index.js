@@ -93,7 +93,17 @@ export const getProdutos = async (tokenData) => {
   const BaseUrl = "https://easyfert.onrender.com/bling?frontend=true";
   const url = `${BaseUrl}&access_token=${access_token}`;
   const res = await axios.get(url);
-  console.log(res)
+  console.log(res);
+  const blingRes = JSON.parse(res.data.blingResponse);
+  return blingRes.data.data;
+};
+
+export const getProdutosDetails = async (tokenData, id) => {
+  const { access_token } = tokenData;
+  const BaseUrl = "https://easyfert.onrender.com/bling";
+  const url = `${BaseUrl}/${id}?access_token=${access_token}`;
+  const res = await axios.get(url);
+  console.log(res);
   const blingRes = JSON.parse(res.data.blingResponse);
   return blingRes.data.data;
 };
@@ -102,9 +112,9 @@ export const refreshandget = async (refresh_token, setToken, _id) => {
   const BaseUrl = "https://easyfert.onrender.com/bling/refresh";
   const url = `${BaseUrl}?refresh_token=${refresh_token}`;
   const { data } = await axios.get(url);
-  console.log("refresh", data)
-  const expires_in = Date.now()+(data.expires_in*1000)
-  setToken({...data,_id, expires_in});
+  console.log("refresh", data);
+  const expires_in = Date.now() + data.expires_in * 1000;
+  setToken({ ...data, _id, expires_in });
   const res = await getBlingProducts(data);
   return res;
 };
@@ -112,7 +122,7 @@ export const refreshandget = async (refresh_token, setToken, _id) => {
 export const getBlingProducts = async (tokenData) => {
   const produtos = await getProdutos(tokenData);
   console.log(produtos);
-  const products = produtos.map(( produto ) => ({
+  const products = produtos.map((produto) => ({
     _id: produto.id,
     image: produto.imagem.thumbnail,
     title: produto.nome,
@@ -147,6 +157,24 @@ export const getBlingProducts = async (tokenData) => {
   //   return data;
   //   return error;
   // }
+};
+
+export const getBlingProductsDetails = async (tokenData, id) => {
+  const produto = await getProdutosDetails(tokenData);
+  console.log(produto)
+  const product = {
+    _id: produto.id,
+    image: produto.imagem.thumbnail,
+    title: produto.nome,
+    price: produto.preco,
+    description: produto.descricaoCurta,
+    description2: produto.descricaoComplementar,
+    tags: [],
+    availability: produto.situacao,
+    brand: produto.marca,
+    kit: produto.nome.includes("Kit"),
+  }
+  return product
 };
 
 export const getString = (block) => {
@@ -311,16 +339,15 @@ export const jsonToXml = (produto) => {
 export const postBlingOrder = async (order, token) => {
   const url = `https://easyfert.onrender.com/bling/sellorder`;
   const body = {
-    order, 
-    token
-  }
+    order,
+    token,
+  };
   const response = await axios.post(url, body);
   console.log(response);
-}
-
+};
 
 // export const updateBling = async (order, tokenData, handleToken) => {
- 
+
 //   const produtos = await getProdutos(tokenData, handleToken);
 //   for (let index = 0; index < products.length; index++) {
 //     const [id, quantity] = products[index].split("_");
