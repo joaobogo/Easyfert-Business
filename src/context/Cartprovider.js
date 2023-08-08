@@ -40,8 +40,9 @@ function CartProvider({ children }) {
       const { access_token, refresh_token, expires_in, _id } = token[0];
       if (expires_in <= Date.now()) {
         refreshandget(refresh_token,handleToken, _id).then(setSanityProd)
-      }
+      }else{
       getBlingProducts({access_token}).then(setSanityProd);
+    }
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
