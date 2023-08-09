@@ -77,7 +77,7 @@ function ProductDetails() {
   const setPrevImg = () => {
     setImgIndex((prevIndex) => {
       if (prevIndex === 0) {
-        return product.image.length - 1;
+        return product.images.length - 1;
       } else {
         return prevIndex - 1;
       }
@@ -86,7 +86,7 @@ function ProductDetails() {
 
   const setNextImg = () => {
     setImgIndex((prevIndex) => {
-      if (prevIndex === product.image.length - 1) {
+      if (prevIndex === product.images.length - 1) {
         return 0;
       } else {
         return prevIndex + 1;
