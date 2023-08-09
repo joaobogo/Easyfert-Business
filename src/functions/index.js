@@ -173,6 +173,7 @@ export const getBlingProductsDetails = async (tokenData, id) => {
   const product = {
     _id: produto.id,
     image: produto.midia?.imagens.externas[0].link,
+    images: produto.midia?.imagens.externas,
     title: produto.nome,
     price: produto.preco,
     description: produto.descricaoCurta,

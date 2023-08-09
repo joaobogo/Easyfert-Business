@@ -129,7 +129,7 @@ function ProductDetails() {
               <button className="arrows" onClick={setPrevImg}>
                 {"<"}
               </button>
-              <img src={product.image}></img>
+              <img src={product.images[imgIndex].link}></img>
               <button className="arrows" onClick={setNextImg}>
                 {">"}
               </button>
