@@ -160,7 +160,7 @@ export const getBlingProducts = async (tokenData) => {
 };
 
 export const getBlingProductsDetails = async (tokenData, id) => {
-  const produto = await getProdutosDetails(tokenData);
+  const produto = await getProdutosDetails(tokenData, id);
   console.log(produto)
   const product = {
     _id: produto.id,
