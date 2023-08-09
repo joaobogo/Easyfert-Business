@@ -103,8 +103,8 @@ export const getProdutosDetails = async (tokenData, id) => {
   const BaseUrl = "https://easyfert.onrender.com/bling";
   const url = `${BaseUrl}/${id}?access_token=${access_token}`;
   const res = await axios.get(url);
-  console.log(res);
-  const blingRes = JSON.parse(res.data.blingResponse);
+  console.log(res.data);
+  const blingRes = JSON.parse(res.data);
   return blingRes.data.data;
 };
 
