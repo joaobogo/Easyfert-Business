@@ -153,7 +153,7 @@ function ProductDetails() {
               <h2>{product.title}</h2>
               <img className="imagemobile" src={product.image}></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
-              <p className="description">{product.description}</p>
+              <div dangerouslySetInnerHTML={{_html:product.description}} className="description"></div>
 
               {cart.some((item) => item.id === product._id) ? (
                 <p className="addedprod"> Produto já adicionado ao carrinho</p>
