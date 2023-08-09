@@ -70,7 +70,7 @@ function ProductDetails() {
   // }, [sanityprod]);
 
   useEffect(() => {
-    if (!tokenData) return;
+    if (!tokenData.access_token) return;
     getBlingProductsDetails(tokenData, id).then(setProduct);
   }, [tokenData]);
 
