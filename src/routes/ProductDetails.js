@@ -16,7 +16,7 @@ import {
 import axios from "axios";
 import redheart from "../assets/redheart.png";
 import heart from "../assets/solidheart.png";
-
+import parse from 'html-react-parser';
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -153,7 +153,7 @@ function ProductDetails() {
               <h2>{product.title}</h2>
               <img className="imagemobile" src={product.image}></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
-              <div dangerouslySetInnerHTML={{_html:product.description}} className="description"></div>
+              <div className="description">{parse(product.description)}</div>
 
               {cart.some((item) => item.id === product._id) ? (
                 <p className="addedprod"> Produto já adicionado ao carrinho</p>
