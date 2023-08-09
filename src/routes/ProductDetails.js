@@ -70,9 +70,10 @@ function ProductDetails() {
   // }, [sanityprod]);
 
   useEffect(() => {
+    if (!tokenData) return;
     getBlingProductsDetails(tokenData, id).then(setProduct);
-  }, []);
-  
+  }, [tokenData]);
+
   const setPrevImg = () => {
     setImgIndex((prevIndex) => {
       if (prevIndex === 0) {
