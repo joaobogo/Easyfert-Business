@@ -78,6 +78,7 @@ const ProductDetailsContainer = styled.div`
 
   .description {
     text-align: justify;
+    color: black;
   }
 
   .rightmenu {

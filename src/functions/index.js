@@ -104,7 +104,7 @@ export const getProdutosDetails = async (tokenData, id) => {
   const url = `${BaseUrl}/${id}?access_token=${access_token}`;
   const res = await axios.get(url);
   const blingRes = JSON.parse(res.data);
-  
+
   return blingRes.data.data;
 };
 
@@ -119,12 +119,21 @@ export const refreshandget = async (refresh_token, setToken, _id) => {
   return res;
 };
 
+export const getDetails = async (tokenData, produtos) => {
+  const promises = produtos.map((produto) =>
+    getProdutosDetails(tokenData, produto.id)
+  );
+  const products = await Promise.all(promises);
+  return products;
+};
+
 export const getBlingProducts = async (tokenData) => {
   const produtos = await getProdutos(tokenData);
-  console.log(produtos);
-  const products = produtos.map((produto) => ({
+  const details = await getDetails(tokenData, produtos);
+  console.log(details);
+  const products = details.map((produto) => ({
     _id: produto.id,
-    image: produto.imagem.thumbnail,
+    image: produto.midia?.imagens.externas[0].link,
     title: produto.nome,
     price: produto.preco,
     description: produto.descricaoCurta,
@@ -132,7 +141,7 @@ export const getBlingProducts = async (tokenData) => {
     // quantity: produto.estoqueAtual,
     tags: [],
     availability: produto.situacao,
-    // brand: produto.marca,
+    brand: produto.marca,
     kit: produto.nome.includes("Kit"),
   }));
 
@@ -161,7 +170,7 @@ export const getBlingProducts = async (tokenData) => {
 
 export const getBlingProductsDetails = async (tokenData, id) => {
   const produto = await getProdutosDetails(tokenData, id);
-  console.log(produto)
+  console.log(produto);
   const product = {
     _id: produto.id,
     image: produto.midia?.imagens.externas[0].link,
@@ -173,8 +182,8 @@ export const getBlingProductsDetails = async (tokenData, id) => {
     availability: produto.situacao,
     brand: produto.marca,
     kit: produto.nome.includes("Kit"),
-  }
-  return product
+  };
+  return product;
 };
 
 export const getString = (block) => {
