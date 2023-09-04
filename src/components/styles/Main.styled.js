@@ -11,7 +11,7 @@ const MainContainer = styled.div`
   background: url(${(props) => props.bgimage}) no-repeat;
   background-size: 100vw;
 
-  /* .leftbutton {
+  .leftbutton {
     position: relative;
     bottom: 50%;
     left: 10%;
@@ -20,33 +20,15 @@ const MainContainer = styled.div`
     height: 20px;
     font-weight: bold;
     opacity: 80%;
-  } */
-
-  .leftbutton {
-    position: relative;
-  
-    border-radius: 50px;
-    border: white;
-   
-    font-weight: bold;
-    opacity: 80%;
   }
+
 
   .leftbutton:hover {
     cursor: pointer;
   }
 
+
   .rightbutton {
-    position: relative;
-
-    border-radius: 50px;
-    border: white;
-
-    font-weight: bold;
-    opacity: 80%;
-  }
-
-  /* .rightbutton {
     position: relative;
     bottom: 50%;
     right: 20%;
@@ -55,7 +37,7 @@ const MainContainer = styled.div`
     height: 20px;
     font-weight: bold;
     opacity: 80%;
-  } */
+  }
 
   .rightbutton:hover {
     cursor: pointer;
