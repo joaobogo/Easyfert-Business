@@ -20,8 +20,8 @@ const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 4rem;
-    bottom: 4rem;
+    left: 32%;
+    bottom: 150%;
   }
 
   a {
@@ -40,12 +40,34 @@ const ButtonContainer = styled.div`
     transform: scale(0.4);
     position: relative;
     width: 70%;
-    bottom: 4rem;
-    left: -4.5rem;
     text-align: center;
+    left: -20%;
+    bottom: 35%;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 400px) {
+    transform: scale(0.4);
+    position: relative;
+    width: 70%;
+    text-align: center;
+    left: -20%;
+    bottom: 38%;
+  }
+
+  @media (max-width: 375px) {
+    transform: scale(0.4);
+    position: relative;
+    text-align: center;
+    left: -20%;
+    bottom: 42%;
+  }
+
+  @media (max-width: 325px) {
+    transform: scale(0.4);
+    position: relative;
+    text-align: center;
+    left: -20%;
+    bottom: 48%;
   }
 `;
 

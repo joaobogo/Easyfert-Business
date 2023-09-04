@@ -59,12 +59,12 @@ function Hero() {
     <MainContainer bgimage={banners[index].bgimage}>
       
     
-        <button className="leftbutton" onClick={prevBanner}>
+        {/* <button className="leftbutton" onClick={prevBanner}>
           {"<"}
         </button>
         <button className="rightbutton" onClick={changeBanner}>
           {">"}
-        </button>
+        </button> */}
       
 
       <ButtonContainer>
