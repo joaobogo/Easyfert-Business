@@ -21,7 +21,7 @@ const ButtonContainer = styled.div`
     align-items: center;
     position: relative;
     left: 32%;
-    bottom: 140%;
+    bottom: 135%;
   }
 
   a {
