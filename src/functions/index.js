@@ -132,7 +132,7 @@ export const getBlingProducts = async (tokenData) => {
   console.log(produtos);
   const products = produtos.map((produto) => ({
     _id: produto.id,
-    image: produto.imagem.thumbnail,
+    // image: produto.imagem.thumbnail,
     title: produto.nome,
     price: produto.preco,
     description: produto.descricaoCurta,
