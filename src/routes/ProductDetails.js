@@ -77,7 +77,7 @@ function ProductDetails() {
       setProduct(data);
       client.fetch('*[_type=="product"]').then((products) => {
         let item = products.find((item) => item.title === data.title);
-        console.log(item)
+  
         if (item && item.image) {
           setImages(item.image);
         }
@@ -140,7 +140,7 @@ function ProductDetails() {
               <button className="arrows" onClick={setPrevImg}>
                 {"<"}
               </button>
-              <img src={product.images[imgIndex].link}></img>
+              <img src={urlFor(images[imgIndex])}></img>
               <button className="arrows" onClick={setNextImg}>
                 {">"}
               </button>
@@ -162,7 +162,7 @@ function ProductDetails() {
               )}
 
               <h2>{product.title}</h2>
-              <img className="imagemobile" src={urlFor(images[imgIndex])}></img>
+              <img className="imagemobile" src={urlFor(images[0])}></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <div className="description">{parse(product.description)}</div>
 
