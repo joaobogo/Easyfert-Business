@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { urlFor } from "../client";
+import { urlFor, client } from "../client";
 import CartContext from "../context/Cartcontext";
 import ProductCardContainer from "./styles/ProductCard.styles";
 import { Link } from "react-router-dom";
