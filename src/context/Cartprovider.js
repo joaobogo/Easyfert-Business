@@ -29,6 +29,8 @@ function CartProvider({ children }) {
   const [sanityprod, setSanityProd] = useState({kits:[],products:[]});
   const [wishlist, setWishList] = useState(initialWishList);
   const [tokenData, setTokenData] = useState({});
+const [isLoading, setIsLoading] = useState(true)
+
 
   useEffect(() => {
     client.fetch('*[_type=="shipping"]').then((prices) => {
@@ -43,6 +45,7 @@ function CartProvider({ children }) {
       }else{
       getBlingProducts({access_token}).then(setSanityProd);
     }
+    setIsLoading(false)
     });
     client.getDocument(customerId).then((res) => setCustomerData(res));
   }, []);
@@ -111,6 +114,8 @@ function CartProvider({ children }) {
     tokenData,
     setTokenData,
     handleToken,
+    isLoading,
+    setIsLoading,
   };
 
   return (
