@@ -2,18 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../context/Cartcontext";
 import { formatCurrency, saveToCart, getBlingProducts } from "../functions";
 import CartItemsContainer from "./styles/CartItems.styles";
+import Loading from "./Loading";
 
 function Cartitem({ item }) {
   const [data, setData] = useState(null);
   const { setCart, setTotalprice, totalprice, cart, tokenData, handleToken } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(item.quantity);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     if (!tokenData.expires_in) return;
-    getBlingProducts(tokenData, handleToken).then((res) => {
-      const productData = res.products.find(({ _id }) => _id === item._id);
+    getBlingProducts(tokenData, handleToken).then((data) => {
+      const productData = data.products.find(({ _id }) => _id === item._id);
       setData(productData);
+      client.fetch('*[_type=="product"]').then((products) => {
+        let item = products.find((item) => item.title === productData.title);
+        if (item && item.image) {
+          setImages(item.image);
+        }
+      });
     });
   }, [tokenData]);
 
@@ -72,7 +80,7 @@ function Cartitem({ item }) {
     <>
       {data ? (
         <CartItemsContainer>
-          <img src={data.image[0]}></img>
+          {images.length ? <img src={urlFor(images[0])}></img> : null}
           <p>{data.title}</p>
           <p>{formatCurrency(data.price * quantity)}</p>
 
@@ -88,7 +96,7 @@ function Cartitem({ item }) {
           </button>
         </CartItemsContainer>
       ) : (
-        <span>Carregando...</span>
+        <Loading/>
       )}
     </>
   );

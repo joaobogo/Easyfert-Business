@@ -65,7 +65,6 @@ function ProductDetails() {
       setProduct(data);
       client.fetch('*[_type=="product"]').then((products) => {
         let item = products.find((item) => item.title === data.title);
-  console.log(item)
         if (item && item.image) {
           setImages(item.image);
         }
