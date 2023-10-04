@@ -9,22 +9,32 @@ import Loading from "./Loading";
 
 function FavoritesCart({ id }) {
   const [data, setData] = useState(null);
-  const { setCart, setTotalprice, totalprice, cart, handleWish, handleUnWish } =
+  const { setCart, setTotalprice, totalprice, cart, handleWish, handleUnWish, handleToken,tokenData } =
     useContext(CartContext);
-const [images,setImages] = useState([])
-
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     getById(id).then((data) => {
       setData(data);
+    });
+  }, []);
+
+
+  useEffect(() => {
+    if (!tokenData.expires_in) return;
+    getBlingProducts(tokenData, handleToken).then((data) => {
+      const productData = data.products.find(({ _id }) => _id === id);
       client.fetch('*[_type=="product"]').then((products) => {
-        let item = products.find((item) => item.title === data.title);
+        let item = products.find((item) => item.title === productData.title);
         if (item && item.image) {
           setImages(item.image);
         }
       });
     });
-  }, []);
+  }, [tokenData]);
+
+
+
 
   const handleClick = () => {
     handleUnWish(id);
@@ -44,10 +54,9 @@ const [images,setImages] = useState([])
   };
   return (
     <>
-     
       {data ? (
         <CartItemsContainer>
-         {images.length ?  <img src={urlFor(images[0])}></img> : null }
+          {images.length ? <img src={urlFor(images[0])}></img> : null}
           <p>{data.title}</p>
           <p>{formatCurrency(data.price)}</p>
           <button className="addbutton" onClick={handleClick}>
@@ -58,7 +67,7 @@ const [images,setImages] = useState([])
           </button>
         </CartItemsContainer>
       ) : (
-        <Loading/>
+        <Loading />
       )}
     </>
   );
