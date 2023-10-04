@@ -16,7 +16,8 @@ import {
 import axios from "axios";
 import redheart from "../assets/redheart.png";
 import heart from "../assets/solidheart.png";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
+import Loading from "../components/Loading";
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -38,6 +39,7 @@ function ProductDetails() {
   const [cep, setCep] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [images, setImages] = useState([]);
 
   const handleAdd = () => {
     setCart((prevcart) => {
@@ -71,7 +73,15 @@ function ProductDetails() {
 
   useEffect(() => {
     if (!tokenData.access_token) return;
-    getBlingProductsDetails(tokenData, id).then(setProduct);
+    getBlingProductsDetails(tokenData, id).then((data) => {
+      setProduct(data);
+      client.fetch('*[_type=="product"]').then((products) => {
+        let item = products.find((item) => item.title === data.title);
+        if (item && item.image) {
+          setImages(item.image);
+        }
+      });
+    });
   }, [tokenData]);
 
   const setPrevImg = () => {
@@ -151,7 +161,7 @@ function ProductDetails() {
               )}
 
               <h2>{product.title}</h2>
-              <img className="imagemobile" src={product.image}></img>
+              <img className="imagemobile" src={urlFor(images[imgIndex])}></img>
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <div className="description">{parse(product.description)}</div>
 
@@ -201,7 +211,7 @@ function ProductDetails() {
             </div>
           </section>
         ) : (
-          <span> Carregando ....</span>
+          <Loading></Loading>
         )}
       </ProductDetailsContainer>
 
