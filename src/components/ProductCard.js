@@ -15,7 +15,10 @@ function ProductCard({ product }) {
   useEffect(() => {
     client.fetch('*[_type=="product"]').then((products) => {
       let item = products.find((item) => item.title === product.title);
-      setImage(item.image[0]);
+      if(item && item.image){
+        setImage(item.image[0]);
+      }
+      
     });
   }, []);
 
