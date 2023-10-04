@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { client } from "../client";
 import { urlFor } from "../client";
 import CartContext from "../context/Cartcontext";
-import { formatCurrency, saveToCart } from "../functions";
+import { formatCurrency, getBlingProducts, saveToCart } from "../functions";
 import CartItemsContainer from "./styles/CartItems.styles";
 import WishListContainer from "./styles/WishList.styles";
 import Loading from "./Loading";
