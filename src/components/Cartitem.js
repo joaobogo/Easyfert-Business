@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../context/Cartcontext";
+import { client, urlFor } from "../client";
 import { formatCurrency, saveToCart, getBlingProducts } from "../functions";
 import CartItemsContainer from "./styles/CartItems.styles";
 import Loading from "./Loading";
