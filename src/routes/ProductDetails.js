@@ -57,19 +57,7 @@ function ProductDetails() {
     });
   };
 
-  // useEffect(() => {
-  //   console.log(sanityprod);
-  //   if (!sanityprod.products.length) return;
 
-  //   const productData = sanityprod.products.find(({ _id }) => _id === id);
-
-  //   if (productData) {
-  //     setProduct(productData);
-  //   } else {
-  //     const kit = sanityprod.kits.find(({ _id }) => _id === id);
-  //     setProduct(kit);
-  //   }
-  // }, [sanityprod]);
 
   useEffect(() => {
     if (!tokenData.access_token) return;
@@ -140,7 +128,7 @@ function ProductDetails() {
               <button className="arrows" onClick={setPrevImg}>
                 {"<"}
               </button>
-              <img src={urlFor(images[imgIndex])}></img>
+              {images.length ? <img src={urlFor(images[imgIndex])}></img>:null}
               <button className="arrows" onClick={setNextImg}>
                 {">"}
               </button>
@@ -162,7 +150,7 @@ function ProductDetails() {
               )}
 
               <h2>{product.title}</h2>
-              <img className="imagemobile" src={urlFor(images[0])}></img>
+              {images.length ? <img className="imagemobile" src={urlFor(images[0])}></img> : null}
               <p className="pricetag">{formatCurrency(product.price)}</p>
               <div className="description">{parse(product.description)}</div>
 
