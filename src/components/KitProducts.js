@@ -12,9 +12,12 @@ function KitProducts() {
 
   return (
     <ProductContainer>
-      <h1 id="kits" name="kits" className="kittitle">
-        Kits
-      </h1>
+      {sanityprod.kits.length && (
+        <h1 id="kits" name="kits" className="kittitle">
+          Kits
+        </h1>
+      )}
+
       {isLoading ? (
         <Loading />
       ) : (

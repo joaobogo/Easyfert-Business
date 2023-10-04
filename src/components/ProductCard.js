@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { formatCurrency, getBlingProducts } from "../functions";
 import redheart from "../assets/redheart.png";
 import heart from "../assets/solidheart.png";
+import Loading from "./Loading";
 
 function ProductCard({ product }) {
   const { setCart, cart, wishlist, handleWish, handleUnWish } =
@@ -55,7 +56,7 @@ function ProductCard({ product }) {
       )}
 
       <Link to={`product/${product._id}`}>
-        {image && <img src={urlFor(image)} />}
+        {image ? <img src={urlFor(image)} /> : <Loading/>}
 
         <h3>{product.title}</h3>
         <p>{formatCurrency(product.price)}</p>
