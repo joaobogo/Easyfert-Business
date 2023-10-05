@@ -4,7 +4,7 @@ import Cartitem from "../components/Cartitem";
 import { client } from "../client";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { formatCurrency, handlePac, handleSedex } from "../functions";
+import { formatCurrency, getsum, handlePac, handleSedex } from "../functions";
 import ShoppingCartContainer from "../components/styles/ShoppingCart.styles";
 import Header from "../components/Header";
 import Lowfooter from "../components/Lowfooter";
@@ -67,7 +67,7 @@ const ShoppingCart = () => {
         {cart.map((item) => (
           <Cartitem key={item.id} item={item} />
         ))}
-        <p>Total: {formatCurrency(totalprice.toFixed(2))}</p>
+        <p>Total: {formatCurrency(getsum(cart).toFixed(2))}</p>
 
         <div className="buttons">
           <button disabled={!state} onClick={() => handleShipping("PAC")}>
@@ -85,7 +85,7 @@ const ShoppingCart = () => {
 
         <p>
           Total + Frete:{" "}
-          {formatCurrency((totalprice + Number(price)).toFixed(2))}
+          {formatCurrency((getsum(cart) + Number(price)).toFixed(2))}
         </p>
         <button className="buybutton" onClick={decreaseStock}>
           {buttontext}

@@ -52,8 +52,8 @@ function FavoritesCart({ id }) {
     });
   };
 
-  const isDisabled = (wishlist, id) => {
-    return wishlist.some((item) => {
+  const isDisabled = (cart, id) => {
+    return cart.some((item) => {
       if (item.id === id) {
         return true;
       } else {
@@ -70,7 +70,7 @@ function FavoritesCart({ id }) {
           <p>{data.title}</p>
           <p>{formatCurrency(data.price)}</p>
           <button
-            disabled={isDisabled(wishlist, data.id)}
+            disabled={isDisabled(cart, data.id)}
             className="addbutton"
             onClick={handleClick}
           >
