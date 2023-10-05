@@ -72,7 +72,7 @@ function FavoritesCart({ id }) {
           <p>{data.title}</p>
           <p>{formatCurrency(data.price)}</p>
           <button
-            disabled={isDisabled(cart, data.id)}
+            disabled={isDisabled(cart, id)}
             className="addbutton"
             onClick={handleClick}
           >
