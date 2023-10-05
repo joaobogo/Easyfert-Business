@@ -9,17 +9,23 @@ import Loading from "./Loading";
 
 function FavoritesCart({ id }) {
   const [data, setData] = useState(null);
-  const { setCart, setTotalprice, totalprice, cart, handleWish, handleUnWish, handleToken,tokenData } =
-    useContext(CartContext);
+  const {
+    setCart,
+    setTotalprice,
+    totalprice,
+    cart,
+    handleWish,
+    handleUnWish,
+    handleToken,
+    tokenData,
+  } = useContext(CartContext);
   const [images, setImages] = useState([]);
-
-
 
   useEffect(() => {
     if (!tokenData.expires_in) return;
     getBlingProducts(tokenData, handleToken).then((data) => {
       const productData = data.products.find(({ _id }) => _id === id);
-      setData(productData)
+      setData(productData);
       client.fetch('*[_type=="product"]').then((products) => {
         let item = products.find((item) => item.title === productData.title);
         if (item && item.image) {
@@ -28,9 +34,6 @@ function FavoritesCart({ id }) {
       });
     });
   }, [tokenData]);
-
-
-
 
   const handleClick = () => {
     handleUnWish(id);
@@ -48,6 +51,17 @@ function FavoritesCart({ id }) {
       return newcart;
     });
   };
+
+  const isDisabled = (wishlist, id) => {
+    return wishlist.some((item) => {
+      if (item.id === id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  };
+
   return (
     <>
       {data ? (
@@ -55,7 +69,11 @@ function FavoritesCart({ id }) {
           {images.length ? <img src={urlFor(images[0])}></img> : null}
           <p>{data.title}</p>
           <p>{formatCurrency(data.price)}</p>
-          <button className="addbutton" onClick={handleClick}>
+          <button
+            disabled={isDisabled(wishlist, data.id)}
+            className="addbutton"
+            onClick={handleClick}
+          >
             Adicionar ao Carrinho
           </button>
           <button className="delete" onClick={() => handleUnWish(id)}>
@@ -68,6 +86,5 @@ function FavoritesCart({ id }) {
     </>
   );
 }
-
 
 export default FavoritesCart;
