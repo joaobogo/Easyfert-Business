@@ -30,6 +30,7 @@ function CheckoutForm() {
     totalprice,
     cart,
     globalCep,
+    setGlobalCep,
     shippings,
     setShippingPrice,
     orderId,
@@ -66,15 +67,17 @@ function CheckoutForm() {
           setNeighborhood(data.bairro);
         });
     }
-  }, []);
+  }, [globalCep]);
 
   useEffect(() => {
+    const [name, ...lastName] = customerData.name.split(' ')
     setCEP(customerData.cep);
-    setName(customerData.name);
-    setLastName(customerData.lastName);
+    setName(name);
+    setLastName(lastName.join(' '));
     setEmail(customerData.email);
-    setPhoneNumber(customerData.phonenumber);
-    setCpf(customerData.setCpf);
+    setPhoneNumber(customerData.phone_number);
+    setCpf(customerData.cpf);
+    setGlobalCep(customerData.cep)
   }, [customerData]);
 
   const handlePayment = (e) => {
