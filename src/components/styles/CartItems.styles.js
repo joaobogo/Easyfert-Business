@@ -15,12 +15,15 @@ const CartItemsContainer = styled.div`
     color: white;
     font-weight: bold;
     border-radius: 10px;
-
   }
 
   .addbutton:hover {
     background-color: #51978a;
     cursor: pointer;
+  }
+
+  .addbutton:disabled {
+    opacity: 0.7;
   }
   .delete {
     border-radius: 50%;
@@ -58,13 +61,10 @@ const CartItemsContainer = styled.div`
     }
 
     .addbutton {
-    width: 18vw;
-    height: 50px;
-    font-size: 12px;
- 
- 
-
-  }
+      width: 18vw;
+      height: 50px;
+      font-size: 12px;
+    }
   }
 
   @media (max-width: 320px) {
