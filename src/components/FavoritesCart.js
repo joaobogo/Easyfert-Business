@@ -54,6 +54,8 @@ function FavoritesCart({ id }) {
 
   const isDisabled = (cart, id) => {
     return cart.some((item) => {
+      console.log(item)
+      console.log(id)
       if (item.id === id) {
         return true;
       } else {

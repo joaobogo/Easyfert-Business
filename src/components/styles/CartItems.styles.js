@@ -20,6 +20,8 @@ const CartItemsContainer = styled.div`
   .addbutton:hover {
     background-color: #51978a;
     cursor: pointer;
+
+    
   }
 
   .addbutton:disabled {
