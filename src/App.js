@@ -68,7 +68,7 @@ function App() {
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/blog/:id" element={<Blogdetails />} />
             <Route path="/wishlist" element={<Wishlist/>} />
-            <Route path="/myaccount" element={<Myaccount/>} />
+            <Route path="/myaccount" element={<Login><Myaccount/></Login>} />
           </Routes>
         </BrowserRouter>
       </Adminprovider>

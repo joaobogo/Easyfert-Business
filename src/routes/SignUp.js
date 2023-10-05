@@ -85,6 +85,7 @@ function SignUp() {
         name: `${name} ${lastName}`,
         email: email,
         address: `cep:${cep}, rua:${address}, numero:${number}, complemento:${extra}, ${city}-${state}`,
+        cep: cep,
         orders: [],
         password: encrypted,
         phone_number: phonenumber,

@@ -20,7 +20,6 @@ import pac from "../assets/pac.png";
 import { useNavigate } from "react-router-dom";
 import api from "../functions/api";
 
-
 function CheckoutForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,10 +63,19 @@ function CheckoutForm() {
           setCity(data.localidade);
           setState(data.uf);
           setAddress(data.logradouro);
-          setNeighborhood(data.bairro)
+          setNeighborhood(data.bairro);
         });
     }
   }, []);
+
+  useEffect(() => {
+    setCEP(customerData.cep);
+    setName(customerData.name);
+    setLastName(customerData.lastName);
+    setEmail(customerData.email);
+    setPhoneNumber(customerData.phonenumber);
+    setCpf(customerData.setCpf);
+  }, [customerData]);
 
   const handlePayment = (e) => {
     setPaymentType(e.target.value);
@@ -217,7 +225,7 @@ function CheckoutForm() {
           setCity(data.localidade);
           setState(data.uf);
           setAddress(data.logradouro);
-          setNeighborhood(data.bairro)
+          setNeighborhood(data.bairro);
         });
     }
   };

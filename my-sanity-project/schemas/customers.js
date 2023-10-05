@@ -15,6 +15,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'cep',
+      title: 'CEP',
+      type: 'string',
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string',
