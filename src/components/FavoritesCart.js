@@ -13,17 +13,13 @@ function FavoritesCart({ id }) {
     useContext(CartContext);
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    getById(id).then((data) => {
-      setData(data);
-    });
-  }, []);
 
 
   useEffect(() => {
     if (!tokenData.expires_in) return;
     getBlingProducts(tokenData, handleToken).then((data) => {
       const productData = data.products.find(({ _id }) => _id === id);
+      setData(productData)
       client.fetch('*[_type=="product"]').then((products) => {
         let item = products.find((item) => item.title === productData.title);
         if (item && item.image) {
@@ -73,8 +69,5 @@ function FavoritesCart({ id }) {
   );
 }
 
-const getById = async (id) => {
-  const product = await client.getDocument(id);
-  return product;
-};
+
 export default FavoritesCart;
